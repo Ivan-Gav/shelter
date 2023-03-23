@@ -3,11 +3,20 @@ $arial: Arial, sans-serif;
 $primary: #F1CDB3;
 $light-s: #FAFAFA;
 $dark-s: #CDCDCD;
+$dark-l: #545454;
+$dark-xl: #4C4C4C;
 
 @mixin brown-background {
     background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 
+@mixin header-text {
+    font-family: $georgia;
+    line-height: 130%;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+}
 
 
 body {
@@ -33,13 +42,25 @@ img {
 }
 
 h1 {
+    @include header-text;
     font-size: 44px;
-    line-height: 130%;
-    font-weight: 400;
-    font-style: normal;
     color: white;
-    margin: 0;
 }
+
+h2 {
+    @include header-text;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    color: $dark-l;
+}
+
+p {
+    font-family: $arial;
+    font-size: 15px;
+    line-height: 160%;
+    color: $dark-xl;
+}
+
 
 button {
     display: flex;
@@ -122,6 +143,7 @@ button {
 .intro {
     display: flex;
     justify-content: space-between;
+    gap: 42px;
     padding: 0 40px;
 
     .intro-text {
@@ -141,5 +163,24 @@ button {
     .intro-image {
         padding: 0;
         border: none;
+    }
+}
+
+.about {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:center;
+    gap: 120px;
+    padding: 80px 40px 100px;
+    .about-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        max-width: 430px;
+        margin: 14px 0;
+        h2 {
+            margin-bottom: 0.5rem;
+        }
     }
 }

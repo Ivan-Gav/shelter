@@ -20,12 +20,31 @@ img {
 }
 
 h1 {
-  font-size: 44px;
+  font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 130%;
   font-weight: 400;
   font-style: normal;
-  color: white;
   margin: 0;
+  font-size: 44px;
+  color: white;
+}
+
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 130%;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 35px;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 160%;
+  color: #4C4C4C;
 }
 
 button {
@@ -100,6 +119,7 @@ button {
 .intro {
   display: flex;
   justify-content: space-between;
+  gap: 42px;
   padding: 0 40px;
 }
 .intro .intro-text {
@@ -119,4 +139,23 @@ button {
 .intro .intro-image {
   padding: 0;
   border: none;
+}
+
+.about {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 120px;
+  padding: 80px 40px 100px;
+}
+.about .about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  max-width: 430px;
+  margin: 14px 0;
+}
+.about .about-text h2 {
+  margin-bottom: 0.5rem;
 }/*# sourceMappingURL=styles.css.map */
