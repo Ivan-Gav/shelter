@@ -40,6 +40,29 @@ h2 {
   color: #545454;
 }
 
+h3 {
+  display: inline;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin: 0;
+}
+
+h4 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 110%;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: #545454;
+  margin: 0;
+}
+
 p {
   font-family: Arial, sans-serif;
   font-size: 15px;
@@ -228,4 +251,78 @@ button.slider-button {
 }
 .slider .slider-footer button {
   margin: auto;
+}
+
+.needs {
+  padding: 80px 40px 100px;
+}
+.needs h2 {
+  width: 35%;
+  margin: auto;
+  text-align: center;
+}
+.needs .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 55px 120px;
+  padding: 60px 87px 0;
+}
+.needs .badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 113px;
+}
+.needs p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+}
+.needs img {
+  width: 60px;
+}
+
+.donation {
+  padding: 80px 40px 100px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: #F6F6F6;
+}
+.donation .donation-text {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0;
+}
+.donation .payment-details {
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #F1CDB3;
+  border-radius: 9px;
+}
+.donation .payment-details img {
+  display: inline;
+  margin-right: 15px;
+}
+.donation h2 {
+  width: 80%;
+}
+.donation p {
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: #B2B2B2;
 }/*# sourceMappingURL=styles.css.map */
