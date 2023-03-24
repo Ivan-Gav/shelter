@@ -1,6 +1,24 @@
+* {
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  line-height: 130%;
+  margin: 0;
+}
+
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 400;
   width: 1280px;
   margin: auto;
   box-sizing: content-box;
@@ -8,6 +26,7 @@ body {
 
 header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 30px 40px;
@@ -20,43 +39,28 @@ img {
 }
 
 h1 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  line-height: 130%;
-  font-weight: 400;
-  font-style: normal;
-  margin: 0;
   font-size: 44px;
+  line-height: 130%;
   color: white;
 }
 
 h2 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  line-height: 130%;
-  font-weight: 400;
-  font-style: normal;
-  margin: 0;
   font-size: 35px;
+  line-height: 130%;
   letter-spacing: 0.06em;
   color: #545454;
 }
 
 h3 {
   display: inline;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #545454;
-  margin: 0;
 }
 
 h4 {
-  font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 110%;
-  font-weight: 400;
-  font-style: normal;
   font-size: 15px;
   letter-spacing: 0.06em;
   color: #545454;
@@ -79,48 +83,59 @@ button {
   width: fit-content;
   height: 52px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 17px;
-  line-height: 130%;
   letter-spacing: 0.06em;
   padding: 15px 45px;
-  border: medium solid #F1CDB3;
+  border: 2px solid #F1CDB3;
   border-radius: 100px;
+  cursor: pointer;
 }
 button.button-primary {
   background-color: #F1CDB3;
 }
+button.button-primary:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  transition: background-color 0.7s ease-in;
+}
 button.button-secondary {
   background-color: transparent;
+}
+button.button-secondary:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  transition: background-color 0.7s ease-in;
 }
 button.slider-button {
   background-color: transparent;
   width: 52px;
   padding: 15px 15px;
-  font-weight: bolder;
+}
+button.slider-button:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  transition: background-color 0.7s ease-in;
 }
 
 .initial-screen {
-  background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   min-height: 908px;
 }
 
 .logo {
-  width: 184px;
-  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 184px;
+  height: 60px;
 }
 
 .logo-text {
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 400;
   font-size: 2em;
   line-height: 110%;
   letter-spacing: 0.05em;
@@ -130,9 +145,7 @@ button.slider-button {
 
 .logo-slogan {
   font-family: Arial, sans-serif;
-  font-weight: 400;
   font-size: 13px;
-  font-style: normal;
   letter-spacing: 0.1em;
   line-height: 15px;
   color: white;
@@ -148,22 +161,36 @@ button.slider-button {
 .main-menu ul li {
   font-family: Arial, sans-serif;
   font-size: 15px;
+  line-height: 160%;
   color: #CDCDCD;
+}
+.main-menu ul li:hover {
+  color: #FAFAFA;
+  cursor: pointer;
+}
+.main-menu ul li:active {
+  color: #FAFAFA;
+  border-bottom: 3px solid #F1CDB3;
+}
+.main-menu ul li.act {
+  color: #FAFAFA;
+  border-bottom: 3px solid #F1CDB3;
 }
 
 .intro {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 42px;
   padding: 0 40px;
 }
 .intro .intro-text {
-  height: 322px;
-  margin-top: 163px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
+  height: 322px;
+  margin-top: 163px;
 }
 .intro .intro-text p {
   font-family: Arial, sans-serif;
@@ -176,14 +203,14 @@ button.slider-button {
   border: none;
 }
 
-.about {
+#about {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   gap: 120px;
   padding: 80px 40px 100px;
 }
-.about .about-text {
+#about .about-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -191,7 +218,7 @@ button.slider-button {
   max-width: 430px;
   margin: 14px 0;
 }
-.about .about-image {
+#about .about-image {
   padding: 0;
   border: none;
 }
@@ -210,6 +237,7 @@ button.slider-button {
 }
 .slider .wrapper {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 60px 0;
@@ -242,8 +270,6 @@ button.slider-button {
 .slider .card p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
-  font-weight: 400;
-  font-style: normal;
   letter-spacing: 0.06em;
 }
 .slider .card button {
@@ -253,35 +279,35 @@ button.slider-button {
   margin: auto;
 }
 
-.needs {
+#needs {
   padding: 80px 40px 100px;
 }
-.needs h2 {
+#needs h2 {
   width: 35%;
   margin: auto;
   text-align: center;
 }
-.needs .wrapper {
+#needs .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 55px 120px;
-  padding: 60px 87px 0;
+  padding: 60px 83px 0;
 }
-.needs .badge {
+#needs .badge {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   min-height: 113px;
 }
-.needs p {
+#needs p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
 }
-.needs img {
+#needs img {
   width: 60px;
 }
 
@@ -321,8 +347,36 @@ button.slider-button {
 .donation p {
   font-family: Arial, sans-serif;
   font-style: italic;
-  font-weight: 400;
   font-size: 12px;
   line-height: 150%;
   color: #B2B2B2;
+}
+
+footer {
+  padding: 40px 40px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 158px;
+  background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+footer .footer-column {
+  padding: 16px 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+footer .footer-column img {
+  display: inline-block;
+  margin-right: 20px;
+}
+footer .footer-column div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+footer .footer-column h2 {
+  color: white;
+}
+footer .footer-column h3 {
+  color: #F1CDB3;
 }/*# sourceMappingURL=styles.css.map */

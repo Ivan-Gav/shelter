@@ -1,40 +1,60 @@
 $georgia: Georgia, 'Times New Roman', Times, serif;
 $arial: Arial, sans-serif;
+
 $primary: #F1CDB3;
+$primary-l:#FDDCC4;
 $light-s: #FAFAFA;
 $light-l: #F6F6F6;
 $dark-s: #CDCDCD;
 $dark-m: #B2B2B2;
 $dark-l: #545454;
 $dark-xl: #4C4C4C;
+$dark-3xl: #292929;
 
-@mixin brown-background {
-    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+@mixin flex-column-space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-@mixin header-text {
-    font-family: $georgia;
-    line-height: 130%;
+@mixin flex-row-space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+}
+
+// Basic settings
+
+* {
     font-weight: 400;
     font-style: normal;
     margin: 0;
+    border: none;
+    padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+    font-family: $georgia;
+    line-height: 130%;
+    margin: 0;   
+}
 
 body {
     font-family: $georgia;
-    font-weight: 400;
     width: 1280px;
     margin: auto;
     box-sizing: content-box;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+    @include flex-row-space-between;
     align-items: center;
     padding: 30px 40px;
-
 }
 
 img {
@@ -44,35 +64,28 @@ img {
 }
 
 h1 {
-    @include header-text;
     font-size: 44px;
+    line-height: 130%;    
     color: white;
 }
 
 h2 {
-    @include header-text;
     font-size: 35px;
+    line-height: 130%;
     letter-spacing: 0.06em;
     color: $dark-l;
 }
 
 h3 {
     display: inline;
-    font-family: $georgia;
-    font-style: normal;
-    font-weight: 400;
     font-size: 20px;
     line-height: 115%;
     letter-spacing: 0.06em;
     color: $dark-l;
-    margin: 0;
 }
 
 h4 {
-    font-family: $georgia;
     line-height: 110%;
-    font-weight: 400;
-    font-style: normal;
     font-size: 15px;
     letter-spacing: 0.06em;
     color: $dark-l;        
@@ -95,54 +108,55 @@ button {
     width:fit-content;
     height: $button-height;
     font-family: $georgia;
-    font-style: normal;
-    font-weight: 400;
     font-size: 17px;
-    line-height: 130%;
     letter-spacing: 0.06em;
     padding: 15px 45px;
-    border: medium solid $primary;
+    border: 2px solid $primary;
     border-radius: 100px;
+    cursor: pointer;
     &.button-primary {
         background-color: $primary;
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;
+            transition: background-color 0.7s ease-in;
+        }
     }
     &.button-secondary {
         background-color: transparent;
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;            
+            transition: background-color 0.7s ease-in;
+        }
     }
     &.slider-button {
         background-color: transparent;
         width: $button-height;
         padding: 15px 15px;
-        font-weight: bolder;
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;            
+            transition: background-color 0.7s ease-in;
+        }
     }
-
 }
 
-
-
 .initial-screen {
-    @include brown-background;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    
+    @include flex-column-space-between;
+    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
     min-height: 908px;
-
 }
 
 .logo {
+    @include flex-column-space-between;
+    align-items: center;
     width: 184px;
     height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .logo-text {
     font-family: $georgia;
-    font-weight: 400;
     font-size: 2em;
     line-height: 110%;
     letter-spacing: 0.05em;
@@ -152,9 +166,7 @@ button {
 
 .logo-slogan {
     font-family: $arial;
-    font-weight: 400;
     font-size: 13px;
-    font-style: normal;
     letter-spacing: 0.1em;
     line-height: 15px;
     color: white;
@@ -171,24 +183,34 @@ button {
         li {
             font-family: $arial;
             font-size: 15px;
+            line-height: 160%;
             color: $dark-s;
+            &:hover {
+                color: $light-s;
+                cursor: pointer;
+            }
+            &:active {
+                color: $light-s;
+                border-bottom: 3px solid $primary;
+            }
+            &.act {
+                color: $light-s;
+                border-bottom: 3px solid $primary;
+            }
         }
     }
 }
 
 .intro {
-    display: flex;
-    justify-content: space-between;
+    @include flex-row-space-between;
     gap: 42px;
     padding: 0 40px;
 
     .intro-text {
+        @include flex-column-space-between;
+        align-items: left;
         height: 322px;
         margin-top: 163px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: left;
         p {
             font-family: $arial;
             font-size: 15px;
@@ -202,16 +224,14 @@ button {
     }
 }
 
-.about {
+#about {
     display: flex;
     flex-direction: row-reverse;
     justify-content:center;
     gap: 120px;
     padding: 80px 40px 100px;
     .about-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-column-space-between;
         align-items: left;
         max-width: 430px;
         margin: 14px 0;
@@ -234,8 +254,7 @@ button {
         margin: auto;
     }
     .wrapper {
-        display: flex;
-        justify-content: space-between;
+        @include flex-row-space-between;
         align-items: center;
         padding: 60px 0;
         .slider-nav-left {
@@ -257,17 +276,13 @@ button {
         width: 100%;        
     }
     .card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-column-space-between;
         align-items: center;
         min-height: 435px;
         background-color: $light-s;
         p {
             font-family: $georgia;
             font-size: 20px;
-            font-weight: 400;
-            font-style: normal;
             letter-spacing: 0.06em;
         }
         button {
@@ -281,7 +296,7 @@ button {
     }
 }
 
-.needs {
+#needs {
     padding: 80px 40px 100px;
     h2 {
     width: 35%;    
@@ -293,12 +308,10 @@ button {
         flex-wrap: wrap;
         justify-content: center;
         gap: 55px 120px;
-        padding: 60px 87px 0;
+        padding: 60px 83px 0;
     }
     .badge {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-column-space-between;
         align-items: center;
         min-height: 113px;
         
@@ -324,16 +337,14 @@ button {
     background-color: $light-l;
     .donation-text {
         width: 380px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-column-space-between;
         align-items:flex-start;
         gap: 20px;
         padding: 0;
     }
     .payment-details {
         display: inline-flex;
-        justify-content: left;
+        justify-content: left; 
         align-items: center;
         padding: 10px 15px;
         background-color: $primary;
@@ -349,9 +360,38 @@ button {
     p {
         font-family: $arial;
         font-style: italic;
-        font-weight: 400;
         font-size: 12px;
         line-height: 150%;
         color: $dark-m;
+    }
+}
+
+footer {
+    padding: 40px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 158px;
+
+    background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+
+
+    .footer-column {
+        padding: 16px 0 60px;
+        @include flex-column-space-between;
+        img {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        div {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+        }
+        h2 {
+            color: white;
+        }
+        h3 {
+            color: $primary;
+        }
     }
 }
