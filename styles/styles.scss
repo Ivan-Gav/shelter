@@ -2,6 +2,7 @@ $georgia: Georgia, 'Times New Roman', Times, serif;
 $arial: Arial, sans-serif;
 $primary: #F1CDB3;
 $light-s: #FAFAFA;
+$light-l: #F6F6F6;
 $dark-s: #CDCDCD;
 $dark-l: #545454;
 $dark-xl: #4C4C4C;
@@ -59,15 +60,16 @@ p {
     font-size: 15px;
     line-height: 160%;
     color: $dark-xl;
+    margin: 0;
 }
 
-
+$button-height: 52px;
 button {
     display: flex;
     align-items: center;
     justify-content: center;
     width:fit-content;
-    height: 52px;
+    height: $button-height;
     font-family: $georgia;
     font-style: normal;
     font-weight: 400;
@@ -75,10 +77,20 @@ button {
     line-height: 130%;
     letter-spacing: 0.06em;
     padding: 15px 45px;
-    border: thin solid $primary;
+    border: medium solid $primary;
     border-radius: 100px;
-    background-color: $primary;
-    
+    &.button-primary {
+        background-color: $primary;
+    }
+    &.button-secondary {
+        background-color: transparent;
+    }
+    &.slider-button {
+        background-color: transparent;
+        width: $button-height;
+        padding: 15px 15px;
+        font-weight: bolder;
+    }
 
 }
 
@@ -179,8 +191,68 @@ button {
         align-items: left;
         max-width: 430px;
         margin: 14px 0;
-        h2 {
-            margin-bottom: 0.5rem;
+    }
+    .about-image {
+        padding: 0;
+        border: none;        
+    }
+}
+
+.slider {
+    background-color: $light-l;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 40px 100px;
+    h2 {
+        text-align: center;
+        width: 35%;
+        margin: auto;
+    }
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 60px 0;
+        .slider-nav-left {
+            width: 105px;
+            display: flex;
+            justify-content: left;
+        }
+        .slider-nav-right {
+            width: 105px;
+            display: flex;
+            justify-content: right;            
+        }
+    }
+    .slider-body {
+        display: flex;
+        justify-content: center;
+        gap: 90px;
+        align-items: center;
+        width: 100%;        
+    }
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 435px;
+        background-color: $light-s;
+        p {
+            font-family: $georgia;
+            font-size: 20px;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 0.06em;
+        }
+        button {
+            margin-bottom: 30px;
+        }        
+    }
+    .slider-footer {
+        button {
+            margin: auto;
         }
     }
 }
