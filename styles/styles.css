@@ -4,6 +4,7 @@
   margin: 0;
   border: none;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -142,6 +143,10 @@ button.slider-button:hover {
   color: #F1CDB3;
   margin: 0;
 }
+.logo-text:hover {
+  color: #FDDCC4;
+  transition: color 0.7s ease-in;
+}
 
 .logo-slogan {
   font-family: Arial, sans-serif;
@@ -166,6 +171,7 @@ button.slider-button:hover {
 }
 .main-menu ul li:hover {
   color: #FAFAFA;
+  transition: color 0.7s ease-in;
   cursor: pointer;
 }
 .main-menu ul li:active {
@@ -266,6 +272,7 @@ button.slider-button:hover {
   align-items: center;
   min-height: 435px;
   background-color: #FAFAFA;
+  transition: background-color 0.7s ease-in;
 }
 .slider .card p {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -274,6 +281,15 @@ button.slider-button:hover {
 }
 .slider .card button {
   margin-bottom: 30px;
+}
+.slider .card:hover {
+  background-color: white;
+  transition: background-color 0.7s ease-in;
+}
+.slider .card:hover button {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  transition: background-color 0.7s ease-in;
 }
 .slider .slider-footer button {
   margin: auto;

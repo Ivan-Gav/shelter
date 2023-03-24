@@ -31,6 +31,7 @@ $dark-3xl: #292929;
     margin: 0;
     border: none;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -162,6 +163,10 @@ button {
     letter-spacing: 0.05em;
     color: $primary;
     margin: 0;
+    &:hover {
+        color: $primary-l;
+        transition: color 0.7s ease-in;
+    }
 }
 
 .logo-slogan {
@@ -187,6 +192,7 @@ button {
             color: $dark-s;
             &:hover {
                 color: $light-s;
+                transition: color 0.7s ease-in;                
                 cursor: pointer;
             }
             &:active {
@@ -280,6 +286,7 @@ button {
         align-items: center;
         min-height: 435px;
         background-color: $light-s;
+        transition: background-color 0.7s ease-in;
         p {
             font-family: $georgia;
             font-size: 20px;
@@ -287,6 +294,15 @@ button {
         }
         button {
             margin-bottom: 30px;
+        }
+        &:hover {
+            background-color: white;
+            transition: background-color 0.7s ease-in;
+            button {
+                background-color: $primary-l;
+                border-color: $primary-l;            
+                transition: background-color 0.7s ease-in;
+            }
         }        
     }
     .slider-footer {
