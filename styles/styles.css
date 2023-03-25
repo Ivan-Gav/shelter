@@ -39,6 +39,10 @@ header {
   align-items: center;
   padding: 30px 40px;
 }
+header.pets-header {
+  width: 1280px;
+  margin: auto;
+}
 
 img {
   display: block;
@@ -114,22 +118,35 @@ button.button-secondary:hover {
   border-color: #FDDCC4;
   transition: background-color 0.7s ease-in;
 }
-button.slider-button {
+button.round-button {
   background-color: transparent;
   width: 52px;
   padding: 15px 15px;
+  font-weight: bold;
 }
-button.slider-button:hover {
+button.round-button.inactive {
+  color: #CDCDCD;
+  border-color: #CDCDCD;
+  pointer-events: none;
+}
+button.round-button.active {
+  background-color: #F1CDB3;
+  border-color: #F1CDB3;
+  pointer-events: none;
+  font-size: 20px;
+  font-weight: 400;
+}
+button.round-button:hover {
   background-color: #FDDCC4;
   border-color: #FDDCC4;
   transition: background-color 0.7s ease-in;
 }
 
-.initial-screen-background {
+.initial-screen {
   background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 
-.initial-screen {
+.initial-screen-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -159,6 +176,13 @@ button.slider-button:hover {
   color: #FDDCC4;
   transition: color 0.7s ease-in;
 }
+.logo-text.pets {
+  color: #545454;
+}
+.logo-text.pets:hover {
+  color: #F1CDB3;
+  transition: color 0.7s ease-in;
+}
 
 .logo-slogan {
   font-family: Arial, sans-serif;
@@ -167,6 +191,9 @@ button.slider-button:hover {
   line-height: 15px;
   color: white;
   margin: 0;
+}
+.logo-slogan.pets {
+  color: #292929;
 }
 
 .main-menu ul {
@@ -180,6 +207,21 @@ button.slider-button:hover {
   font-size: 15px;
   line-height: 160%;
   color: #CDCDCD;
+}
+.main-menu ul li.pets {
+  color: #545454;
+}
+.main-menu ul li.pets:active {
+  border-bottom: 3px solid #F1CDB3;
+}
+.main-menu ul li.pets.pets-act {
+  color: #545454;
+  border-bottom: 3px solid #F1CDB3;
+}
+.main-menu ul li.pets:hover {
+  color: #292929;
+  transition: color 0.7s ease-in;
+  cursor: pointer;
 }
 .main-menu ul li:hover {
   color: #FAFAFA;
@@ -243,11 +285,11 @@ button.slider-button:hover {
   border: none;
 }
 
-.slider-background {
+.slider {
   background-color: #F6F6F6;
 }
 
-.slider {
+.slider-container {
   width: 1280px;
   margin: auto;
   display: flex;
@@ -255,36 +297,42 @@ button.slider-button:hover {
   justify-content: center;
   padding: 80px 40px 100px;
 }
-.slider h2 {
+.slider-container h2 {
   text-align: center;
   width: 35%;
   margin: auto;
 }
-.slider .wrapper {
+.slider-container .wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 60px 0;
 }
-.slider .wrapper .slider-nav-left {
+.slider-container .wrapper .slider-nav-left {
   width: 105px;
   display: flex;
   justify-content: left;
 }
-.slider .wrapper .slider-nav-right {
+.slider-container .wrapper .slider-nav-right {
   width: 105px;
   display: flex;
   justify-content: right;
 }
-.slider .slider-body {
+
+.slider-body {
   display: flex;
   justify-content: center;
   gap: 90px;
   align-items: center;
   width: 100%;
 }
-.slider .card {
+
+.slider-footer button {
+  margin: auto;
+}
+
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -293,25 +341,22 @@ button.slider-button:hover {
   background-color: #FAFAFA;
   transition: background-color 0.7s ease-in;
 }
-.slider .card p {
+.card p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   letter-spacing: 0.06em;
 }
-.slider .card button {
+.card button {
   margin-bottom: 30px;
 }
-.slider .card:hover {
+.card:hover {
   background-color: white;
   transition: background-color 0.7s ease-in;
 }
-.slider .card:hover button {
+.card:hover button {
   background-color: #FDDCC4;
   border-color: #FDDCC4;
   transition: background-color 0.7s ease-in;
-}
-.slider .slider-footer button {
-  margin: auto;
 }
 
 #needs {
@@ -348,11 +393,11 @@ button.slider-button:hover {
   width: 60px;
 }
 
-.donation-background {
+.donation {
   background-color: #F6F6F6;
 }
 
-.donation {
+.donation-container {
   width: 1280px;
   margin: auto;
   padding: 80px 40px 100px;
@@ -362,7 +407,7 @@ button.slider-button:hover {
   align-items: center;
   gap: 30px;
 }
-.donation .donation-text {
+.donation-container .donation-text {
   width: 380px;
   display: flex;
   flex-direction: column;
@@ -371,7 +416,7 @@ button.slider-button:hover {
   gap: 20px;
   padding: 0;
 }
-.donation .payment-details {
+.donation-container .payment-details {
   display: inline-flex;
   justify-content: left;
   align-items: center;
@@ -379,19 +424,64 @@ button.slider-button:hover {
   background-color: #F1CDB3;
   border-radius: 9px;
 }
-.donation .payment-details img {
+.donation-container .payment-details img {
   display: inline;
   margin-right: 15px;
 }
-.donation h2 {
+.donation-container .payment-details a:hover {
+  color: #292929;
+  transition: color 0.7s ease-in;
+}
+.donation-container h2 {
   width: 80%;
 }
-.donation p {
+.donation-container p {
   font-family: Arial, sans-serif;
   font-style: italic;
   font-size: 12px;
   line-height: 150%;
   color: #B2B2B2;
+}
+
+#friends-pets {
+  background-color: #F6F6F6;
+}
+
+.friends-pets-container {
+  width: 1280px;
+  margin: auto;
+  padding: 80px 40px 100px;
+}
+
+.gallery-pets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.gallery-pets h2 {
+  text-align: center;
+  width: 35%;
+  margin: 0 auto 45px;
+}
+
+.gallery-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px 40px;
+  align-items: start;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.pagination-gallery-pets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+  margin: 45px auto 0;
 }
 
 footer {
@@ -426,6 +516,10 @@ footer {
 }
 .footer-container .footer-column h3 {
   color: #F1CDB3;
+}
+.footer-container .footer-column h3:hover {
+  color: white;
+  transition: color 0.7s ease-in;
 }
 .footer-container .footer-column.one {
   width: 288px;

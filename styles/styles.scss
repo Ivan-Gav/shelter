@@ -65,6 +65,10 @@ header {
     @include flex-row-space-between;
     align-items: center;
     padding: 30px 40px;
+    &.pets-header {
+        width: 1280px;
+        margin: auto;
+    }
 }
 
 img {
@@ -146,25 +150,38 @@ button {
         }
     }
 
-    &.slider-button {
+    &.round-button {
         background-color: transparent;
         width: $button-height;
         padding: 15px 15px;
-
+        font-weight: bold;
+        &.inactive {
+            color: $dark-s;
+            border-color: $dark-s;
+            pointer-events: none;
+        }
+        &.active {
+            background-color: $primary;
+            border-color: $primary;
+            pointer-events: none;
+            font-size: 20px;
+            font-weight: 400;
+        }
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
             transition: background-color 0.7s ease-in;
-        }
+        }        
     }
-}
-
-.initial-screen-background {
-    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 
 }
 
 .initial-screen {
+    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+
+}
+
+.initial-screen-container {
     @include flex-column-space-between;
     min-height: 908px;
     width: 1280px;
@@ -185,10 +202,16 @@ button {
     letter-spacing: 0.05em;
     color: $primary;
     margin: 0;
-
     &:hover {
         color: $primary-l;
         transition: color 0.7s ease-in;
+    }
+    &.pets {
+        color: $dark-l;
+        &:hover {
+            color: $primary;
+            transition: color 0.7s ease-in;
+        }
     }
 }
 
@@ -199,6 +222,9 @@ button {
     line-height: 15px;
     color: white;
     margin: 0;
+    &.pets {
+        color: $dark-3xl;
+    }
 }
 
 .main-menu {
@@ -213,6 +239,21 @@ button {
             font-size: 15px;
             line-height: 160%;
             color: $dark-s;
+            &.pets {
+                color: $dark-l;
+                &:active {
+                    border-bottom: 3px solid $primary;                    
+                }
+                &.pets-act {
+                    color: $dark-l;
+                    border-bottom: 3px solid $primary;                    
+                }                
+                &:hover {
+                    color: $dark-3xl;
+                    transition: color 0.7s ease-in;
+                    cursor: pointer;                    
+                }
+            }
 
             &:hover {
                 color: $light-s;
@@ -280,11 +321,11 @@ button {
     }
 }
 
-.slider-background {
+.slider {
     background-color: $light-l;
 }
 
-.slider {
+.slider-container {
     width: 1280px;
     margin: auto;
     display: flex;
@@ -315,47 +356,48 @@ button {
             justify-content: right;
         }
     }
+}
 
-    .slider-body {
-        display: flex;
-        justify-content: center;
-        gap: 90px;
-        align-items: center;
-        width: 100%;
+
+.slider-body {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    align-items: center;
+    width: 100%;
+}
+
+.slider-footer {
+    button {
+        margin: auto;
+    }
+}
+
+.card {
+    @include flex-column-space-between;
+    align-items: center;
+    min-height: 435px;
+    background-color: $light-s;
+    transition: background-color 0.7s ease-in;
+
+    p {
+        font-family: $georgia;
+        font-size: 20px;
+        letter-spacing: 0.06em;
     }
 
-    .card {
-        @include flex-column-space-between;
-        align-items: center;
-        min-height: 435px;
-        background-color: $light-s;
+    button {
+        margin-bottom: 30px;
+    }
+
+    &:hover {
+        background-color: white;
         transition: background-color 0.7s ease-in;
 
-        p {
-            font-family: $georgia;
-            font-size: 20px;
-            letter-spacing: 0.06em;
-        }
-
         button {
-            margin-bottom: 30px;
-        }
-
-        &:hover {
-            background-color: white;
+            background-color: $primary-l;
+            border-color: $primary-l;
             transition: background-color 0.7s ease-in;
-
-            button {
-                background-color: $primary-l;
-                border-color: $primary-l;
-                transition: background-color 0.7s ease-in;
-            }
-        }
-    }
-
-    .slider-footer {
-        button {
-            margin: auto;
         }
     }
 }
@@ -398,11 +440,11 @@ button {
     }
 }
 
-.donation-background {
+.donation {
     background-color: $light-l;
 }
 
-.donation {
+.donation-container {
     width: 1280px;
     margin: auto;
     padding: 80px 40px 100px;
@@ -432,6 +474,10 @@ button {
             display: inline;
             margin-right: 15px;
         }
+        a:hover {
+            color: $dark-3xl;
+            transition: color 0.7s ease-in;
+        }
     }
 
     h2 {
@@ -445,6 +491,43 @@ button {
         line-height: 150%;
         color: $dark-m;
     }
+}
+
+// Pets 
+
+#friends-pets {
+    background-color: $light-l;
+}
+
+.friends-pets-container {
+    width: 1280px;
+    margin: auto;
+    padding: 80px 40px 100px;
+}
+
+.gallery-pets {
+    @include flex-column-space-between;
+    h2 {
+        text-align: center;
+        width: 35%;
+        margin: 0 auto 45px;
+    }
+}
+
+.gallery-body {
+    @include flex-row-space-between;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    align-items: start;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.pagination-gallery-pets {
+    @include flex-row-space-between;
+    justify-content: center;
+    gap: 20px;
+    margin: 45px auto 0;    
 }
 
 footer {
@@ -481,6 +564,10 @@ footer {
 
         h3 {
             color: $primary;
+            &:hover {
+                color: white;
+                transition: color 0.7s ease-in;
+            }
         }
         &.one {
             width: 288px;
