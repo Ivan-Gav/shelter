@@ -394,36 +394,42 @@ button.slider-button:hover {
   color: #B2B2B2;
 }
 
-.footer-background {
+footer {
   background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 
-footer {
+.footer-container {
   width: 1280px;
   margin: auto;
   padding: 40px 40px 0;
   display: flex;
-  justify-content: space-between;
-  gap: 158px;
+  justify-content: left;
 }
-footer .footer-column {
+.footer-container .footer-column {
   padding: 16px 0 60px;
+  margin-right: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-footer .footer-column img {
+.footer-container .footer-column img {
   display: inline-block;
   margin-right: 20px;
 }
-footer .footer-column div {
+.footer-container .footer-column div {
   display: flex;
   justify-content: left;
   align-items: center;
 }
-footer .footer-column h2 {
+.footer-container .footer-column h2 {
   color: white;
 }
-footer .footer-column h3 {
+.footer-container .footer-column h3 {
   color: #F1CDB3;
+}
+.footer-container .footer-column.one {
+  width: 288px;
+}
+.footer-container .footer-column.two {
+  width: 312px;
 }/*# sourceMappingURL=styles.css.map */

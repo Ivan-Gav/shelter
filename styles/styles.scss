@@ -447,20 +447,21 @@ button {
     }
 }
 
-.footer-background {
+footer {
     background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 
-footer {
+.footer-container {
     width: 1280px;
     margin: auto;
     padding: 40px 40px 0;
     display: flex;
-    justify-content: space-between;
-    gap: 158px;
+    justify-content: left;
+
 
     .footer-column {
         padding: 16px 0 60px;
+        margin-right: 150px;
         @include flex-column-space-between;
 
         img {
@@ -480,6 +481,12 @@ footer {
 
         h3 {
             color: $primary;
+        }
+        &.one {
+            width: 288px;
+        }
+        &.two {
+            width: 312px;
         }
     }
 }
