@@ -2,7 +2,7 @@ $georgia: Georgia, 'Times New Roman', Times, serif;
 $arial: Arial, sans-serif;
 
 $primary: #F1CDB3;
-$primary-l:#FDDCC4;
+$primary-l: #FDDCC4;
 $light-s: #FAFAFA;
 $light-l: #F6F6F6;
 $dark-s: #CDCDCD;
@@ -20,7 +20,7 @@ $dark-3xl: #292929;
 @mixin flex-row-space-between {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;    
+    justify-content: space-between;
 }
 
 // Basic settings
@@ -34,22 +34,31 @@ $dark-3xl: #292929;
     scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+header,
+footer,
+section,
+div {
+    box-sizing: border-box;
 }
 
-h1, h2, h3, h4 {
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
     font-family: $georgia;
     line-height: 130%;
-    margin: 0;   
+    margin: 0;
 }
 
 body {
     font-family: $georgia;
-    width: 1280px;
-    margin: auto;
-    box-sizing: content-box;
+
+
 }
 
 header {
@@ -66,7 +75,7 @@ img {
 
 h1 {
     font-size: 44px;
-    line-height: 130%;    
+    line-height: 130%;
     color: white;
 }
 
@@ -89,7 +98,7 @@ h4 {
     line-height: 110%;
     font-size: 15px;
     letter-spacing: 0.06em;
-    color: $dark-l;        
+    color: $dark-l;
     margin: 0;
 }
 
@@ -102,11 +111,12 @@ p {
 }
 
 $button-height: 52px;
+
 button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width:fit-content;
+    width: fit-content;
     height: $button-height;
     font-family: $georgia;
     font-size: 17px;
@@ -115,38 +125,50 @@ button {
     border: 2px solid $primary;
     border-radius: 100px;
     cursor: pointer;
+
     &.button-primary {
         background-color: $primary;
+
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
             transition: background-color 0.7s ease-in;
         }
     }
+
     &.button-secondary {
         background-color: transparent;
+
         &:hover {
             background-color: $primary-l;
-            border-color: $primary-l;            
+            border-color: $primary-l;
             transition: background-color 0.7s ease-in;
         }
     }
+
     &.slider-button {
         background-color: transparent;
         width: $button-height;
         padding: 15px 15px;
+
         &:hover {
             background-color: $primary-l;
-            border-color: $primary-l;            
+            border-color: $primary-l;
             transition: background-color 0.7s ease-in;
         }
     }
 }
 
+.initial-screen-background {
+    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+
+}
+
 .initial-screen {
     @include flex-column-space-between;
-    background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
     min-height: 908px;
+    width: 1280px;
+    margin: auto;
 }
 
 .logo {
@@ -163,6 +185,7 @@ button {
     letter-spacing: 0.05em;
     color: $primary;
     margin: 0;
+
     &:hover {
         color: $primary-l;
         transition: color 0.7s ease-in;
@@ -190,15 +213,18 @@ button {
             font-size: 15px;
             line-height: 160%;
             color: $dark-s;
+
             &:hover {
                 color: $light-s;
-                transition: color 0.7s ease-in;                
+                transition: color 0.7s ease-in;
                 cursor: pointer;
             }
+
             &:active {
                 color: $light-s;
                 border-bottom: 3px solid $primary;
             }
+
             &.act {
                 color: $light-s;
                 border-bottom: 3px solid $primary;
@@ -217,6 +243,7 @@ button {
         align-items: left;
         height: 322px;
         margin-top: 163px;
+
         p {
             font-family: $arial;
             font-size: 15px;
@@ -224,6 +251,7 @@ button {
             color: $dark-s;
         }
     }
+
     .intro-image {
         padding: 0;
         border: none;
@@ -231,80 +259,100 @@ button {
 }
 
 #about {
+    width: 1280px;
+    margin: auto;
     display: flex;
     flex-direction: row-reverse;
-    justify-content:center;
+    justify-content: center;
     gap: 120px;
     padding: 80px 40px 100px;
+
     .about-text {
         @include flex-column-space-between;
         align-items: left;
         max-width: 430px;
         margin: 14px 0;
     }
+
     .about-image {
         padding: 0;
-        border: none;        
+        border: none;
     }
 }
 
-.slider {
+.slider-background {
     background-color: $light-l;
+}
+
+.slider {
+    width: 1280px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 80px 40px 100px;
+
     h2 {
         text-align: center;
         width: 35%;
         margin: auto;
     }
+
     .wrapper {
         @include flex-row-space-between;
         align-items: center;
         padding: 60px 0;
+
         .slider-nav-left {
             width: 105px;
             display: flex;
             justify-content: left;
         }
+
         .slider-nav-right {
             width: 105px;
             display: flex;
-            justify-content: right;            
+            justify-content: right;
         }
     }
+
     .slider-body {
         display: flex;
         justify-content: center;
         gap: 90px;
         align-items: center;
-        width: 100%;        
+        width: 100%;
     }
+
     .card {
         @include flex-column-space-between;
         align-items: center;
         min-height: 435px;
         background-color: $light-s;
         transition: background-color 0.7s ease-in;
+
         p {
             font-family: $georgia;
             font-size: 20px;
             letter-spacing: 0.06em;
         }
+
         button {
             margin-bottom: 30px;
         }
+
         &:hover {
             background-color: white;
             transition: background-color 0.7s ease-in;
+
             button {
                 background-color: $primary-l;
-                border-color: $primary-l;            
+                border-color: $primary-l;
                 transition: background-color 0.7s ease-in;
             }
-        }        
+        }
     }
+
     .slider-footer {
         button {
             margin: auto;
@@ -313,12 +361,16 @@ button {
 }
 
 #needs {
-    padding: 80px 40px 100px;
-    h2 {
-    width: 35%;    
+    width: 1280px;
     margin: auto;
-    text-align: center;
+    padding: 80px 40px 100px;
+
+    h2 {
+        width: 35%;
+        margin: auto;
+        text-align: center;
     }
+
     .wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -326,53 +378,66 @@ button {
         gap: 55px 120px;
         padding: 60px 83px 0;
     }
+
     .badge {
         @include flex-column-space-between;
         align-items: center;
         min-height: 113px;
-        
+
     }
+
     p {
         font-family: $georgia;
         font-size: 20px;
         line-height: 115%;
         letter-spacing: 0.06em;
     }
+
     img {
         width: 60px;
     }
 }
 
+.donation-background {
+    background-color: $light-l;
+}
+
 .donation {
+    width: 1280px;
+    margin: auto;
     padding: 80px 40px 100px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    background-color: $light-l;
+
     .donation-text {
         width: 380px;
         @include flex-column-space-between;
-        align-items:flex-start;
+        align-items: flex-start;
         gap: 20px;
         padding: 0;
     }
+
     .payment-details {
         display: inline-flex;
-        justify-content: left; 
+        justify-content: left;
         align-items: center;
         padding: 10px 15px;
         background-color: $primary;
         border-radius: 9px;
+
         img {
             display: inline;
             margin-right: 15px;
-        }    
-    }        
+        }
+    }
+
     h2 {
         width: 80%;
     }
+
     p {
         font-family: $arial;
         font-style: italic;
@@ -382,30 +447,37 @@ button {
     }
 }
 
+.footer-background {
+    background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
 footer {
+    width: 1280px;
+    margin: auto;
     padding: 40px 40px 0;
     display: flex;
     justify-content: space-between;
     gap: 158px;
 
-    background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
-
-
     .footer-column {
         padding: 16px 0 60px;
         @include flex-column-space-between;
+
         img {
             display: inline-block;
             margin-right: 20px;
         }
+
         div {
             display: flex;
             justify-content: left;
             align-items: center;
         }
+
         h2 {
             color: white;
         }
+
         h3 {
             color: $primary;
         }

@@ -7,12 +7,22 @@
   scroll-behavior: smooth;
 }
 
+header,
+footer,
+section,
+div {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 130%;
   margin: 0;
@@ -20,9 +30,6 @@ h1, h2, h3, h4 {
 
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  width: 1280px;
-  margin: auto;
-  box-sizing: content-box;
 }
 
 header {
@@ -118,12 +125,17 @@ button.slider-button:hover {
   transition: background-color 0.7s ease-in;
 }
 
+.initial-screen-background {
+  background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+}
+
 .initial-screen {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   min-height: 908px;
+  width: 1280px;
+  margin: auto;
 }
 
 .logo {
@@ -210,6 +222,8 @@ button.slider-button:hover {
 }
 
 #about {
+  width: 1280px;
+  margin: auto;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -229,8 +243,13 @@ button.slider-button:hover {
   border: none;
 }
 
-.slider {
+.slider-background {
   background-color: #F6F6F6;
+}
+
+.slider {
+  width: 1280px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -296,6 +315,8 @@ button.slider-button:hover {
 }
 
 #needs {
+  width: 1280px;
+  margin: auto;
   padding: 80px 40px 100px;
 }
 #needs h2 {
@@ -327,14 +348,19 @@ button.slider-button:hover {
   width: 60px;
 }
 
+.donation-background {
+  background-color: #F6F6F6;
+}
+
 .donation {
+  width: 1280px;
+  margin: auto;
   padding: 80px 40px 100px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  background-color: #F6F6F6;
 }
 .donation .donation-text {
   width: 380px;
@@ -368,12 +394,17 @@ button.slider-button:hover {
   color: #B2B2B2;
 }
 
+.footer-background {
+  background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
 footer {
+  width: 1280px;
+  margin: auto;
   padding: 40px 40px 0;
   display: flex;
   justify-content: space-between;
   gap: 158px;
-  background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 footer .footer-column {
   padding: 16px 0 60px;
