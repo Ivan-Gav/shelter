@@ -215,8 +215,9 @@ button.round-button:hover {
   border-bottom: 3px solid #F1CDB3;
 }
 .main-menu ul li.pets.pets-act {
-  color: #545454;
+  color: #292929;
   border-bottom: 3px solid #F1CDB3;
+  pointer-events: none;
 }
 .main-menu ul li.pets:hover {
   color: #292929;
@@ -235,6 +236,7 @@ button.round-button:hover {
 .main-menu ul li.act {
   color: #FAFAFA;
   border-bottom: 3px solid #F1CDB3;
+  pointer-events: none;
 }
 
 .intro {
@@ -458,7 +460,11 @@ button.round-button:hover {
   flex-direction: column;
   justify-content: space-between;
 }
-.gallery-pets h2 {
+.gallery-pets h1 {
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
   text-align: center;
   width: 35%;
   margin: 0 auto 45px;

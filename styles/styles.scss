@@ -245,8 +245,9 @@ button {
                     border-bottom: 3px solid $primary;                    
                 }
                 &.pets-act {
-                    color: $dark-l;
-                    border-bottom: 3px solid $primary;                    
+                    color: $dark-3xl;
+                    border-bottom: 3px solid $primary;
+                    pointer-events: none;                    
                 }                
                 &:hover {
                     color: $dark-3xl;
@@ -269,6 +270,7 @@ button {
             &.act {
                 color: $light-s;
                 border-bottom: 3px solid $primary;
+                pointer-events: none;
             }
         }
     }
@@ -507,7 +509,11 @@ button {
 
 .gallery-pets {
     @include flex-column-space-between;
-    h2 {
+    h1 {
+        font-size: 35px;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        color: $dark-l;     
         text-align: center;
         width: 35%;
         margin: 0 auto 45px;
