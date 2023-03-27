@@ -1,0 +1,84 @@
+header {
+    &.pets-header {
+        width: 1280px;
+        margin: auto;
+    }
+}
+
+.logo-text {
+    &.pets {
+        color: $dark-l;
+        &:hover {
+            color: $primary;
+            transition: color 0.7s ease-in;
+        }
+    }
+}
+
+.logo-slogan {
+    &.pets {
+        color: $dark-3xl;
+    }
+}
+
+.main-menu {
+    ul {
+        li {
+            &.pets {
+                color: $dark-l;
+                &:active {
+                    border-bottom: 3px solid $primary;                    
+                }
+                &.pets-act {
+                    color: $dark-3xl;
+                    border-bottom: 3px solid $primary;
+                    pointer-events: none;                    
+                }                
+                &:hover {
+                    color: $dark-3xl;
+                    transition: color 0.7s ease-in;
+                    cursor: pointer;                    
+                }
+            }
+        }
+    }
+}
+
+#friends-pets {
+    background-color: $light-l;
+}
+
+.friends-pets-container {
+    width: 1280px;
+    margin: auto;
+    padding: 80px 40px 100px;
+}
+
+.gallery-pets {
+    @include flex-column-space-between;
+    h1 {
+        font-size: 35px;
+        line-height: 130%;
+        letter-spacing: 0.06em;
+        color: $dark-l;     
+        text-align: center;
+        width: 35%;
+        margin: 0 auto 45px;
+    }
+}
+
+.gallery-body {
+    @include flex-row-space-between;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    align-items: start;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.pagination-gallery-pets {
+    @include flex-row-space-between;
+    justify-content: center;
+    gap: 20px;
+    margin: 45px auto 0;    
+}

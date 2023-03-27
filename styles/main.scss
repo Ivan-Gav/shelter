@@ -1,0 +1,11 @@
+// variables, mixins and general styles (for all elements, body, paragraphs etc)
+@import 'partials/base';
+
+// buttons and cards
+@import 'partials/components';
+
+// general layout and home page
+@import 'partials/layout';
+
+// our-pets page
+@import 'partials/pets';

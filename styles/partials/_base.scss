@@ -1,0 +1,109 @@
+$georgia: ('Georgia', 'Times New Roman', 'Times', serif);
+$arial: ('Arial', sans-serif);
+
+$primary: #F1CDB3;
+$primary-l: #FDDCC4;
+$light-s: #FAFAFA;
+$light-l: #F6F6F6;
+$dark-s: #CDCDCD;
+$dark-m: #B2B2B2;
+$dark-l: #545454;
+$dark-xl: #4C4C4C;
+$dark-3xl: #292929;
+
+@mixin flex-column-space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@mixin flex-row-space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+// Basic settings
+
+* {
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    border: none;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+header,
+footer,
+section,
+div {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $georgia;
+    line-height: 130%;
+    margin: 0;
+}
+
+body {
+    font-family: $georgia;
+}
+
+header {
+    @include flex-row-space-between;
+    align-items: center;
+    padding: 30px 40px;
+}
+
+img {
+    display: block;
+    margin: 0;
+    border: none;
+}
+
+h1 {
+    font-size: 44px;
+    line-height: 130%;
+    color: white;
+}
+
+h2 {
+    font-size: 35px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: $dark-l;
+}
+
+h3 {
+    display: inline;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: $dark-l;
+}
+
+h4 {
+    margin: 0;
+    font-size: 15px;
+    letter-spacing: 0.06em;    
+    line-height: 110%;
+    color: $dark-l;
+}
+
+p {
+    font-family: $arial;
+    font-size: 15px;
+    line-height: 160%;
+    color: $dark-xl;
+    margin: 0;
+}

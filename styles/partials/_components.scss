@@ -1,0 +1,90 @@
+$button-height: 52px;
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: $button-height;
+    font-family: $georgia;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    padding: 15px 45px;
+    border: 2px solid $primary;
+    border-radius: 100px;
+    cursor: pointer;
+
+    &.button-primary {
+        background-color: $primary;
+
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;
+            transition: background-color 0.7s ease-in;
+        }
+    }
+
+    &.button-secondary {
+        background-color: transparent;
+
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;
+            transition: background-color 0.7s ease-in;
+        }
+    }
+
+    &.round-button {
+        background-color: transparent;
+        width: $button-height;
+        padding: 15px 15px;
+        font-weight: bold;
+        &.inactive {
+            color: $dark-s;
+            border-color: $dark-s;
+            pointer-events: none;
+        }
+        &.active {
+            background-color: $primary;
+            border-color: $primary;
+            pointer-events: none;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        &:hover {
+            background-color: $primary-l;
+            border-color: $primary-l;
+            transition: background-color 0.7s ease-in;
+        }        
+    }
+
+}
+
+.card {
+    @include flex-column-space-between;
+    align-items: center;
+    min-height: 435px;
+    background-color: $light-s;
+    transition: background-color 0.7s ease-in;
+
+    p {
+        font-family: $georgia;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+    }
+
+    button {
+        margin-bottom: 30px;
+    }
+
+    &:hover {
+        background-color: white;
+        transition: background-color 0.7s ease-in;
+
+        button {
+            background-color: $primary-l;
+            border-color: $primary-l;
+            transition: background-color 0.7s ease-in;
+        }
+    }
+}

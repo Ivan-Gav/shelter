@@ -23,13 +23,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia", "Times New Roman", "Times", serif;
   line-height: 130%;
   margin: 0;
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia", "Times New Roman", "Times", serif;
 }
 
 header {
@@ -38,10 +38,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 30px 40px;
-}
-header.pets-header {
-  width: 1280px;
-  margin: auto;
 }
 
 img {
@@ -72,15 +68,15 @@ h3 {
 }
 
 h4 {
-  line-height: 110%;
+  margin: 0;
   font-size: 15px;
   letter-spacing: 0.06em;
+  line-height: 110%;
   color: #545454;
-  margin: 0;
 }
 
 p {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 15px;
   line-height: 160%;
   color: #4C4C4C;
@@ -94,7 +90,7 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   height: 52px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia", "Times New Roman", "Times", serif;
   font-size: 17px;
   letter-spacing: 0.06em;
   padding: 15px 45px;
@@ -142,6 +138,33 @@ button.round-button:hover {
   transition: background-color 0.7s ease-in;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 435px;
+  background-color: #FAFAFA;
+  transition: background-color 0.7s ease-in;
+}
+.card p {
+  font-family: "Georgia", "Times New Roman", "Times", serif;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+.card button {
+  margin-bottom: 30px;
+}
+.card:hover {
+  background-color: white;
+  transition: background-color 0.7s ease-in;
+}
+.card:hover button {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  transition: background-color 0.7s ease-in;
+}
+
 .initial-screen {
   background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
@@ -165,7 +188,7 @@ button.round-button:hover {
 }
 
 .logo-text {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia", "Times New Roman", "Times", serif;
   font-size: 2em;
   line-height: 110%;
   letter-spacing: 0.05em;
@@ -176,24 +199,14 @@ button.round-button:hover {
   color: #FDDCC4;
   transition: color 0.7s ease-in;
 }
-.logo-text.pets {
-  color: #545454;
-}
-.logo-text.pets:hover {
-  color: #F1CDB3;
-  transition: color 0.7s ease-in;
-}
 
 .logo-slogan {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 13px;
   letter-spacing: 0.1em;
   line-height: 15px;
   color: white;
   margin: 0;
-}
-.logo-slogan.pets {
-  color: #292929;
 }
 
 .main-menu ul {
@@ -203,26 +216,10 @@ button.round-button:hover {
   list-style: none;
 }
 .main-menu ul li {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 15px;
   line-height: 160%;
   color: #CDCDCD;
-}
-.main-menu ul li.pets {
-  color: #545454;
-}
-.main-menu ul li.pets:active {
-  border-bottom: 3px solid #F1CDB3;
-}
-.main-menu ul li.pets.pets-act {
-  color: #292929;
-  border-bottom: 3px solid #F1CDB3;
-  pointer-events: none;
-}
-.main-menu ul li.pets:hover {
-  color: #292929;
-  transition: color 0.7s ease-in;
-  cursor: pointer;
 }
 .main-menu ul li:hover {
   color: #FAFAFA;
@@ -255,7 +252,7 @@ button.round-button:hover {
   margin-top: 163px;
 }
 .intro .intro-text p {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 15px;
   line-height: 160%;
   color: #CDCDCD;
@@ -334,33 +331,6 @@ button.round-button:hover {
   margin: auto;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 435px;
-  background-color: #FAFAFA;
-  transition: background-color 0.7s ease-in;
-}
-.card p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 20px;
-  letter-spacing: 0.06em;
-}
-.card button {
-  margin-bottom: 30px;
-}
-.card:hover {
-  background-color: white;
-  transition: background-color 0.7s ease-in;
-}
-.card:hover button {
-  background-color: #FDDCC4;
-  border-color: #FDDCC4;
-  transition: background-color 0.7s ease-in;
-}
-
 #needs {
   width: 1280px;
   margin: auto;
@@ -386,7 +356,7 @@ button.round-button:hover {
   min-height: 113px;
 }
 #needs p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Georgia", "Times New Roman", "Times", serif;
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
@@ -438,11 +408,89 @@ button.round-button:hover {
   width: 80%;
 }
 .donation-container p {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   font-style: italic;
   font-size: 12px;
   line-height: 150%;
   color: #B2B2B2;
+}
+
+footer {
+  background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
+.footer-container {
+  width: 1280px;
+  margin: auto;
+  padding: 40px 40px 0;
+  display: flex;
+  justify-content: left;
+}
+.footer-container .footer-column {
+  padding: 16px 0 60px;
+  margin-right: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer-container .footer-column img {
+  display: inline-block;
+  margin-right: 20px;
+}
+.footer-container .footer-column div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.footer-container .footer-column h2 {
+  color: white;
+}
+.footer-container .footer-column h3 {
+  color: #F1CDB3;
+}
+.footer-container .footer-column h3:hover {
+  color: white;
+  transition: color 0.7s ease-in;
+}
+.footer-container .footer-column.one {
+  width: 288px;
+}
+.footer-container .footer-column.two {
+  width: 312px;
+}
+
+header.pets-header {
+  width: 1280px;
+  margin: auto;
+}
+
+.logo-text.pets {
+  color: #545454;
+}
+.logo-text.pets:hover {
+  color: #F1CDB3;
+  transition: color 0.7s ease-in;
+}
+
+.logo-slogan.pets {
+  color: #292929;
+}
+
+.main-menu ul li.pets {
+  color: #545454;
+}
+.main-menu ul li.pets:active {
+  border-bottom: 3px solid #F1CDB3;
+}
+.main-menu ul li.pets.pets-act {
+  color: #292929;
+  border-bottom: 3px solid #F1CDB3;
+  pointer-events: none;
+}
+.main-menu ul li.pets:hover {
+  color: #292929;
+  transition: color 0.7s ease-in;
+  cursor: pointer;
 }
 
 #friends-pets {
@@ -488,48 +536,4 @@ button.round-button:hover {
   justify-content: center;
   gap: 20px;
   margin: 45px auto 0;
-}
-
-footer {
-  background: url(../images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
-}
-
-.footer-container {
-  width: 1280px;
-  margin: auto;
-  padding: 40px 40px 0;
-  display: flex;
-  justify-content: left;
-}
-.footer-container .footer-column {
-  padding: 16px 0 60px;
-  margin-right: 150px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.footer-container .footer-column img {
-  display: inline-block;
-  margin-right: 20px;
-}
-.footer-container .footer-column div {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-.footer-container .footer-column h2 {
-  color: white;
-}
-.footer-container .footer-column h3 {
-  color: #F1CDB3;
-}
-.footer-container .footer-column h3:hover {
-  color: white;
-  transition: color 0.7s ease-in;
-}
-.footer-container .footer-column.one {
-  width: 288px;
-}
-.footer-container .footer-column.two {
-  width: 312px;
-}/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=main.css.map */
