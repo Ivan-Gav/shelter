@@ -10,7 +10,7 @@ header {
         color: $dark-l;
         &:hover {
             color: $primary;
-            transition: color 0.7s ease-in;
+            @include transition (color);
         }
     }
 }
@@ -36,7 +36,7 @@ header {
                 }                
                 &:hover {
                     color: $dark-3xl;
-                    transition: color 0.7s ease-in;
+                    @include transition (color);
                     cursor: pointer;                    
                 }
             }
@@ -55,11 +55,10 @@ header {
 }
 
 .gallery-pets {
-    @include flex-column-space-between;
+    
+    @include flex ($flexdir: column, $justifycont: space-between);
     h1 {
-        font-size: 35px;
-        line-height: 130%;
-        letter-spacing: 0.06em;
+        @include font ($size: 3.5rem, $lineheight: 130%, $spacing: 0.06em);
         color: $dark-l;     
         text-align: center;
         width: 35%;
@@ -68,17 +67,15 @@ header {
 }
 
 .gallery-body {
-    @include flex-row-space-between;
+    @include flex ($flexdir: row, $justifycont: space-between, $alignitems: flex-start);
     flex-wrap: wrap;
     gap: 30px 40px;
-    align-items: start;
     width: 100%;
     padding: 15px 0;
 }
 
 .pagination-gallery-pets {
-    @include flex-row-space-between;
-    justify-content: center;
+    @include flex ($flexdir: row, $justifycont: center);
     gap: 20px;
     margin: 45px auto 0;    
 }

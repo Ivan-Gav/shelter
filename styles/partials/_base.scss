@@ -11,23 +11,33 @@ $dark-l: #545454;
 $dark-xl: #4C4C4C;
 $dark-3xl: #292929;
 
-@mixin flex-column-space-between {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+@mixin transition ($prop: all) {
+    transition: $prop 0.3s ease-in;
 }
 
-@mixin flex-row-space-between {
+@mixin font ($size, $weight: 400, $style: normal, $lineheight: $size, $spacing: normal) {
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+    line-height: $lineheight;
+    letter-spacing: $spacing;
+}
+
+@mixin flex ($flexdir: row, $justifycont: space-between, $alignitems: normal) {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: $flexdir;
+    justify-content: $justifycont;
+    align-items: $alignitems;
 }
 
 // Basic settings
 
+html {
+    font-size: 10px;
+}
+
+
 * {
-    font-weight: 400;
-    font-style: normal;
     margin: 0;
     border: none;
     padding: 0;
@@ -60,8 +70,7 @@ body {
 }
 
 header {
-    @include flex-row-space-between;
-    align-items: center;
+    @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
     padding: 30px 40px;
 }
 
@@ -72,38 +81,30 @@ img {
 }
 
 h1 {
-    font-size: 44px;
-    line-height: 130%;
+    @include font ($size: 4.4rem, $lineheight: 130%);
     color: white;
 }
 
 h2 {
-    font-size: 35px;
-    line-height: 130%;
-    letter-spacing: 0.06em;
+    @include font ($size: 3.5rem, $lineheight: 130%, $spacing: 0.06em);
     color: $dark-l;
 }
 
 h3 {
+    @include font ($size: 2rem, $lineheight: 115%, $spacing: 0.06em);    
     display: inline;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
     color: $dark-l;
 }
 
 h4 {
+    @include font ($size: 1.5rem, $lineheight: 110%, $spacing: 0.06em);
     margin: 0;
-    font-size: 15px;
-    letter-spacing: 0.06em;    
-    line-height: 110%;
     color: $dark-l;
 }
 
 p {
+    @include font ($size: 1.5rem, $lineheight: 160%);
     font-family: $arial;
-    font-size: 15px;
-    line-height: 160%;
     color: $dark-xl;
     margin: 0;
 }

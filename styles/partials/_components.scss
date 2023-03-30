@@ -1,14 +1,11 @@
 $button-height: 52px;
 
 button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
     width: fit-content;
     height: $button-height;
     font-family: $georgia;
-    font-size: 17px;
-    letter-spacing: 0.06em;
+    @include font ($size: 1.7rem, $spacing: 0.06em);
     padding: 15px 45px;
     border: 2px solid $primary;
     border-radius: 100px;
@@ -20,7 +17,7 @@ button {
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
-            transition: background-color 0.7s ease-in;
+            @include transition (background-color);
         }
     }
 
@@ -30,7 +27,7 @@ button {
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
-            transition: background-color 0.7s ease-in;
+            @include transition (background-color);
         }
     }
 
@@ -48,29 +45,28 @@ button {
             background-color: $primary;
             border-color: $primary;
             pointer-events: none;
-            font-size: 20px;
-            font-weight: 400;
+            @include font ($size: 2rem, $weight: 400);
+
         }
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
-            transition: background-color 0.7s ease-in;
+            @include transition (background-color);
         }        
     }
 
 }
 
 .card {
-    @include flex-column-space-between;
-    align-items: center;
+    @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
     min-height: 435px;
     background-color: $light-s;
-    transition: background-color 0.7s ease-in;
+    border-radius: 9px;
+    @include transition (background-color);
 
     p {
         font-family: $georgia;
-        font-size: 20px;
-        letter-spacing: 0.06em;
+        @include font ($size: 2rem, $spacing: 0.06em);
     }
 
     button {
@@ -79,12 +75,14 @@ button {
 
     &:hover {
         background-color: white;
-        transition: background-color 0.7s ease-in;
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        @include transition (all);
+        cursor: pointer;
 
         button {
             background-color: $primary-l;
             border-color: $primary-l;
-            transition: background-color 0.7s ease-in;
+            @include transition (background-color);
         }
     }
 }

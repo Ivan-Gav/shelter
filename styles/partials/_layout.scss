@@ -5,7 +5,7 @@
 }
 
 .initial-screen-container {
-    @include flex-column-space-between;
+    @include flex ($flexdir: column, $justifycont: space-between);
     min-height: 908px;
     width: 1280px;
     margin: auto;
@@ -13,30 +13,25 @@
 
 // Header
 .logo {
-    @include flex-column-space-between;
-    align-items: center;
+    @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
     width: 184px;
     height: 60px;
 }
 
 .logo-text {
     font-family: $georgia;
-    font-size: 2em;
-    line-height: 110%;
-    letter-spacing: 0.05em;
+    @include font ($size: 3.2rem, $lineheight: 110%, $spacing: 0.05em);
     color: $primary;
     margin: 0;
     &:hover {
         color: $primary-l;
-        transition: color 0.7s ease-in;
+        @include transition (color);
     }
 }
 
 .logo-slogan {
     font-family: $arial;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    line-height: 15px;
+    @include font ($size: 1.3rem, $lineheight: 1.5rem, $spacing: 0.1em);
     color: white;
     margin: 0;
 }
@@ -50,13 +45,12 @@
 
         li {
             font-family: $arial;
-            font-size: 15px;
-            line-height: 160%;
+            @include font ($size: 1.5rem, $lineheight: 160%); //???
             color: $dark-s;
 
             &:hover {
                 color: $light-s;
-                transition: color 0.7s ease-in;
+                @include transition (color);
                 cursor: pointer;
             }
 
@@ -77,20 +71,18 @@
 
 // Section Intro (Not only...) 
 .intro {
-    @include flex-row-space-between;
+    @include flex ($flexdir: row, $justifycont: space-between);
     gap: 42px;
     padding: 0 40px;
 
     .intro-text {
-        @include flex-column-space-between;
-        align-items: left;
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: left);
         height: 322px;
         margin-top: 163px;
 
         p {
             font-family: $arial;
-            font-size: 15px;
-            line-height: 160%;
+            @include font ($size: 1.5rem, $lineheight: 160%);
             color: $dark-s;
         }
     }
@@ -114,8 +106,7 @@
     padding: 80px 40px 100px;
 
     .about-text {
-        @include flex-column-space-between;
-        align-items: left;
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: left);
         max-width: 430px;
         margin: 14px 0;
     }
@@ -148,30 +139,25 @@
     }
 
     .wrapper {
-        @include flex-row-space-between;
-        align-items: center;
+        @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
         padding: 60px 0;
 
         .slider-nav-left {
             width: 105px;
-            display: flex;
-            justify-content: left;
+            @include flex ($flexdir: row, $justifycont: left);
         }
 
         .slider-nav-right {
             width: 105px;
-            display: flex;
-            justify-content: right;
+            @include flex ($flexdir: row, $justifycont: right);
         }
     }
 }
 
 
 .slider-body {
-    display: flex;
-    justify-content: center;
+    @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
     gap: 90px;
-    align-items: center;
     width: 100%;
 }
 
@@ -195,25 +181,21 @@
     }
 
     .wrapper {
-        display: flex;
+        @include flex ($flexdir: row, $justifycont: center);
         flex-wrap: wrap;
-        justify-content: center;
         gap: 55px 120px;
         padding: 60px 83px 0;
     }
 
     .badge {
-        @include flex-column-space-between;
-        align-items: center;
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
         min-height: 113px;
 
     }
 
     p {
         font-family: $georgia;
-        font-size: 20px;
-        line-height: 115%;
-        letter-spacing: 0.06em;
+        @include font ($size: 2rem, $lineheight: 115%, $spacing: 0.06em);
     }
 
     img {
@@ -231,16 +213,12 @@
     width: 1280px;
     margin: auto;
     padding: 80px 40px 100px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
+    @include flex ($flexdir: row-reverse, $justifycont: center, $alignitems: center);
     gap: 30px;
 
     .donation-text {
         width: 380px;
-        @include flex-column-space-between;
-        align-items: flex-start;
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
         gap: 20px;
         padding: 0;
     }
@@ -259,7 +237,7 @@
         }
         a:hover {
             color: $dark-3xl;
-            transition: color 0.7s ease-in;
+            @include transition (color);
         }
     }
 
@@ -269,9 +247,7 @@
 
     p {
         font-family: $arial;
-        font-style: italic;
-        font-size: 12px;
-        line-height: 150%;
+        @include font ($size: 1.2rem, $style: italic, $lineheight: 150%);
         color: $dark-m;
     }
 }
@@ -292,7 +268,7 @@ footer {
     .footer-column {
         padding: 16px 0 60px;
         margin-right: 150px;
-        @include flex-column-space-between;
+        @include flex ($flexdir: column, $justifycont: space-between);
 
         img {
             display: inline-block;
@@ -313,7 +289,7 @@ footer {
             color: $primary;
             &:hover {
                 color: white;
-                transition: color 0.7s ease-in;
+                @include transition (color);
             }
         }
         &.one {
