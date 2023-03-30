@@ -164,6 +164,7 @@ button.round-button:hover {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 270px;
   min-height: 435px;
   background-color: #FAFAFA;
   border-radius: 9px;
@@ -202,7 +203,7 @@ button.round-button:hover {
   justify-content: space-between;
   align-items: normal;
   min-height: 908px;
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -302,12 +303,12 @@ button.round-button:hover {
 }
 
 #about {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  gap: 120px;
+  gap: 10%;
   padding: 80px 40px 100px;
 }
 #about .about-text {
@@ -328,7 +329,7 @@ button.round-button:hover {
 }
 
 .slider-container {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -337,24 +338,24 @@ button.round-button:hover {
 }
 .slider-container h2 {
   text-align: center;
-  width: 35%;
+  max-width: 410px;
   margin: auto;
 }
-.slider-container .wrapper {
+.slider-container .slider-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 60px 0;
 }
-.slider-container .wrapper .slider-nav-left {
+.slider-container .slider-wrapper .slider-nav-left {
   width: 105px;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: normal;
 }
-.slider-container .wrapper .slider-nav-right {
+.slider-container .slider-wrapper .slider-nav-right {
   width: 105px;
   display: flex;
   flex-direction: row;
@@ -367,8 +368,9 @@ button.round-button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 90px;
+  gap: calc(90px - (1021px - 100%) / 2);
   width: 100%;
+  min-width: 880px;
 }
 
 .slider-footer button {
@@ -376,23 +378,23 @@ button.round-button:hover {
 }
 
 #needs {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   padding: 80px 40px 100px;
 }
 #needs h2 {
-  width: 35%;
+  max-width: 410px;
   margin: auto;
   text-align: center;
 }
-#needs .wrapper {
+#needs .needs-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: normal;
   flex-wrap: wrap;
   gap: 55px 120px;
-  padding: 60px 83px 0;
+  padding: 60px calc(83px - (1200px - 100%) / 2) 0;
 }
 #needs .badge {
   display: flex;
@@ -418,14 +420,14 @@ button.round-button:hover {
 }
 
 .donation-container {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   padding: 80px 40px 100px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 2.5%;
 }
 .donation-container .donation-text {
   width: 380px;
@@ -470,15 +472,22 @@ footer {
 }
 
 .footer-container {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   padding: 40px 40px 0;
   display: flex;
+  flex-direction: row;
   justify-content: left;
+  align-items: normal;
+}
+.footer-container .footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: normal;
 }
 .footer-container .footer-column {
   padding: 16px 0 60px;
-  margin-right: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -488,7 +497,7 @@ footer {
   display: inline-block;
   margin-right: 20px;
 }
-.footer-container .footer-column div {
+.footer-container .footer-column .footer-item {
   display: flex;
   justify-content: left;
   align-items: center;
@@ -504,14 +513,16 @@ footer {
   transition: color 0.3s ease-in;
 }
 .footer-container .footer-column.one {
-  width: 288px;
+  max-width: 438px;
+  padding-right: calc(-750px + 100%);
 }
 .footer-container .footer-column.two {
-  width: 312px;
+  max-width: 462px;
+  padding-right: calc(-750px + 100%);
 }
 
 header.pets-header {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
 }
 
@@ -549,7 +560,7 @@ header.pets-header {
 }
 
 .friends-pets-container {
-  width: 1280px;
+  max-width: 1280px;
   margin: auto;
   padding: 80px 40px 100px;
 }
@@ -568,14 +579,14 @@ header.pets-header {
   letter-spacing: 0.06em;
   color: #545454;
   text-align: center;
-  width: 35%;
+  max-width: 410px;
   margin: 0 auto 45px;
 }
 
 .gallery-body {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 30px 40px;

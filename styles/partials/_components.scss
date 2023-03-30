@@ -59,6 +59,7 @@ button {
 
 .card {
     @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+    width: 270px;
     min-height: 435px;
     background-color: $light-s;
     border-radius: 9px;
