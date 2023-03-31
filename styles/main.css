@@ -39,7 +39,6 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
 }
 
 img {
@@ -204,7 +203,13 @@ button.round-button:hover {
   align-items: normal;
   min-height: 908px;
   max-width: 1280px;
+  padding: 30px 40px 0;
   margin: auto;
+}
+@media screen and (max-width: 1064px) {
+  .initial-screen-container {
+    padding: 30px 30px 0;
+  }
 }
 
 .logo {
@@ -277,8 +282,16 @@ button.round-button:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: normal;
-  gap: 42px;
-  padding: 0 40px;
+  gap: calc(42px - (1280px - 100%) / 10);
+  padding: 0;
+}
+@media screen and (max-width: 1064px) {
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
 .intro .intro-text {
   display: flex;
@@ -286,7 +299,11 @@ button.round-button:hover {
   justify-content: space-between;
   align-items: left;
   height: 322px;
+  max-width: 460px;
   margin-top: 163px;
+}
+.intro .intro-text h1 {
+  max-width: 320px;
 }
 .intro .intro-text p {
   font-family: "Arial", sans-serif;
@@ -297,9 +314,24 @@ button.round-button:hover {
   letter-spacing: normal;
   color: #CDCDCD;
 }
+@media screen and (max-width: 1064px) {
+  .intro .intro-text .button-primary {
+    margin: auto;
+  }
+}
+@media screen and (max-width: 1064px) {
+  .intro .intro-text {
+    margin: 60px auto 100px;
+  }
+}
 .intro .intro-image {
   padding: 0;
   border: none;
+}
+@media screen and (max-width: 1064px) {
+  .intro .intro-image img {
+    width: 569px;
+  }
 }
 
 #about {
@@ -308,16 +340,32 @@ button.round-button:hover {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  align-items: normal;
   gap: 10%;
   padding: 80px 40px 100px;
+}
+@media screen and (max-width: 1064px) {
+  #about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+  }
 }
 #about .about-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: left;
+  align-items: flex-start;
   max-width: 430px;
+  min-height: 380px;
   margin: 14px 0;
+}
+@media screen and (max-width: 1064px) {
+  #about .about-text {
+    margin: 0;
+  }
 }
 #about .about-image {
   padding: 0;
@@ -334,7 +382,13 @@ button.round-button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: normal;
   padding: 80px 40px 100px;
+}
+@media screen and (max-width: 1064px) {
+  .slider-container {
+    padding: 80px 30px 100px;
+  }
 }
 .slider-container h2 {
   text-align: center;
@@ -344,9 +398,10 @@ button.round-button:hover {
 .slider-container .slider-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 60px 0;
+  overflow: hidden;
 }
 .slider-container .slider-wrapper .slider-nav-left {
   width: 105px;
@@ -355,12 +410,22 @@ button.round-button:hover {
   justify-content: left;
   align-items: normal;
 }
+@media screen and (max-width: 1064px) {
+  .slider-container .slider-wrapper .slider-nav-left {
+    width: 64px;
+  }
+}
 .slider-container .slider-wrapper .slider-nav-right {
   width: 105px;
   display: flex;
   flex-direction: row;
   justify-content: right;
   align-items: normal;
+}
+@media screen and (max-width: 1064px) {
+  .slider-container .slider-wrapper .slider-nav-right {
+    width: 64px;
+  }
 }
 
 .slider-body {
@@ -372,6 +437,19 @@ button.round-button:hover {
   width: 100%;
   min-width: 880px;
 }
+@media screen and (max-width: 1064px) {
+  .slider-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: calc(100% - 540px);
+    width: 580px;
+    min-width: 320px;
+    overflow: hidden;
+  }
+}
 
 .slider-footer button {
   margin: auto;
@@ -381,6 +459,11 @@ button.round-button:hover {
   max-width: 1280px;
   margin: auto;
   padding: 80px 40px 100px;
+}
+@media screen and (max-width: 1064px) {
+  #needs {
+    padding: 80px 0 100px;
+  }
 }
 #needs h2 {
   max-width: 410px;
@@ -396,12 +479,24 @@ button.round-button:hover {
   gap: 55px 120px;
   padding: 60px calc(83px - (1200px - 100%) / 2) 0;
 }
+@media screen and (max-width: 1064px) {
+  #needs .needs-wrapper {
+    margin: auto;
+    gap: 55px 60px;
+    padding: 60px 0 0;
+  }
+}
 #needs .badge {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   min-height: 113px;
+}
+@media screen and (max-width: 1064px) {
+  #needs .badge {
+    min-width: 170px;
+  }
 }
 #needs p {
   font-family: "Georgia", "Times New Roman", "Times", serif;
@@ -428,6 +523,15 @@ button.round-button:hover {
   justify-content: center;
   align-items: center;
   gap: 2.5%;
+}
+@media screen and (max-width: 1064px) {
+  .donation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+  }
 }
 .donation-container .donation-text {
   width: 380px;
@@ -480,18 +584,40 @@ footer {
   justify-content: left;
   align-items: normal;
 }
+@media screen and (max-width: 1064px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px 0;
+  }
+}
 .footer-container .footer-content {
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: normal;
+  min-height: 310px;
+  padding: 16px 0 60px;
+}
+@media screen and (max-width: 1064px) {
+  .footer-container .footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: normal;
+    min-height: 299px;
+    padding: 0 34px 65px;
+  }
 }
 .footer-container .footer-column {
-  padding: 16px 0 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: normal;
+  height: 234px;
+  margin: 0;
 }
 .footer-container .footer-column img {
   display: inline-block;
@@ -516,9 +642,21 @@ footer {
   max-width: 438px;
   padding-right: calc(-750px + 100%);
 }
+@media screen and (max-width: 1064px) {
+  .footer-container .footer-column.one {
+    max-width: 338px;
+    padding-right: 50px;
+  }
+}
 .footer-container .footer-column.two {
   max-width: 462px;
   padding-right: calc(-750px + 100%);
+}
+@media screen and (max-width: 1064px) {
+  .footer-container .footer-column.two {
+    max-width: 302px;
+    padding-right: 0;
+  }
 }
 
 header.pets-header {
@@ -591,6 +729,8 @@ header.pets-header {
   flex-wrap: wrap;
   gap: 30px 40px;
   width: 100%;
+  max-height: 930px;
+  overflow: hidden;
   padding: 15px 0;
 }
 

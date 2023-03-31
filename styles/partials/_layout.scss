@@ -8,7 +8,11 @@
     @include flex ($flexdir: column, $justifycont: space-between);
     min-height: 908px;
     max-width: 1280px;
+    padding: 30px 40px 0;
     margin: auto;
+    @include media-laptop {
+        padding: 30px 30px 0;
+    }
 }
 
 // Header
@@ -23,6 +27,7 @@
     @include font ($size: 3.2rem, $lineheight: 110%, $spacing: 0.05em);
     color: $primary;
     margin: 0;
+
     &:hover {
         color: $primary-l;
         @include transition (color);
@@ -45,7 +50,7 @@
 
         li {
             font-family: $arial;
-            @include font ($size: 1.5rem, $lineheight: 160%); //???
+            @include font ($size: 1.5rem, $lineheight: 160%);
             color: $dark-s;
 
             &:hover {
@@ -67,31 +72,59 @@
         }
     }
 }
+
 //end of Header
 
 // Section Intro (Not only...) 
 .intro {
     @include flex ($flexdir: row, $justifycont: space-between);
-    gap: 42px;
-    padding: 0 40px;
+    gap: calc(42px - calc(1280px - 100%)/10);
+    padding: 0;
+
+    @include media-laptop {
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-end);
+    }
 
     .intro-text {
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: left);
         height: 322px;
+        max-width: 460px;
         margin-top: 163px;
+
+        h1 {
+            max-width: 320px;
+        }
 
         p {
             font-family: $arial;
             @include font ($size: 1.5rem, $lineheight: 160%);
             color: $dark-s;
         }
+
+        .button-primary {
+            @include media-laptop {
+                margin: auto;
+            }
+        }
+
+        @include media-laptop {
+            margin: 60px auto 100px;
+        }
     }
 
     .intro-image {
         padding: 0;
         border: none;
+
+        img {
+            @include media-laptop {
+                width: 569px;
+            }
+        }
+
     }
 }
+
 // end of Section Intro (Not only...) 
 // end of Initial screen
 
@@ -99,16 +132,25 @@
 #about {
     max-width: 1280px;
     margin: auto;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
+    @include flex ($flexdir: row-reverse, $justifycont: center);
     gap: 10%;
     padding: 80px 40px 100px;
 
+    @include media-laptop {
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+        gap: 80px;
+    }
+
+
     .about-text {
-        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: left);
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
         max-width: 430px;
+        min-height: 380px;
         margin: 14px 0;
+
+        @include media-laptop {
+            margin: 0;
+        }
     }
 
     .about-image {
@@ -116,6 +158,7 @@
         border: none;
     }
 }
+
 // end of Section About (About the shelter...)
 
 // Section Friends (Our friends who...)
@@ -127,10 +170,12 @@
 .slider-container {
     max-width: 1280px;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex ($flexdir: column, $justifycont: center);
     padding: 80px 40px 100px;
+
+    @include media-laptop {
+        padding: 80px 30px 100px;
+    }
 
     h2 {
         text-align: center;
@@ -139,17 +184,26 @@
     }
 
     .slider-wrapper {
-        @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
+        @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
         padding: 60px 0;
+        overflow: hidden;
 
         .slider-nav-left {
             width: 105px;
             @include flex ($flexdir: row, $justifycont: left);
+
+            @include media-laptop {
+                width: 64px;
+            }
         }
 
         .slider-nav-right {
             width: 105px;
             @include flex ($flexdir: row, $justifycont: right);
+
+            @include media-laptop {
+                width: 64px;
+            }
         }
     }
 }
@@ -157,10 +211,18 @@
 
 .slider-body {
     @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
-    //gap: 8.8%;
     gap: calc(90px - calc(1021px - 100%)/2);
     width: 100%;
     min-width: 880px;
+
+    @include media-laptop {
+        @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
+        flex-wrap: nowrap;
+        gap: calc(100% - 540px);
+        width: 580px;
+        min-width: 320px;
+        overflow: hidden;
+    }
 }
 
 .slider-footer {
@@ -168,6 +230,7 @@
         margin: auto;
     }
 }
+
 // end of Section Friends (Our friends who...)
 
 // Section Needs (How you can help..)
@@ -175,6 +238,10 @@
     max-width: 1280px;
     margin: auto;
     padding: 80px 40px 100px;
+
+    @include media-laptop {
+        padding: 80px 0 100px;
+    }
 
     h2 {
         max-width: 410px;
@@ -187,11 +254,21 @@
         flex-wrap: wrap;
         gap: 55px 120px;
         padding: 60px calc(83px - (1200px - 100%)/2) 0;
+
+        @include media-laptop {
+            margin: auto;
+            gap: 55px 60px;
+            padding: 60px 0 0;
+        }
     }
 
     .badge {
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
         min-height: 113px;
+
+        @include media-laptop {
+            min-width: 170px;
+        }
     }
 
     p {
@@ -203,6 +280,7 @@
         width: 60px;
     }
 }
+
 // end of Section Needs (How you can help..)
 
 // Section Donation (You can also make a donation)
@@ -216,6 +294,11 @@
     padding: 80px 40px 100px;
     @include flex ($flexdir: row-reverse, $justifycont: center, $alignitems: center);
     gap: 2.5%;
+
+    @include media-laptop {
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+        gap: 60px;
+    }
 
     .donation-text {
         width: 380px;
@@ -236,6 +319,7 @@
             display: inline;
             margin-right: 15px;
         }
+
         a:hover {
             color: $dark-3xl;
             @include transition (color);
@@ -252,6 +336,7 @@
         color: $dark-m;
     }
 }
+
 // end of Section Donation (You can also make a donation)
 
 // Footer
@@ -265,14 +350,26 @@ footer {
     padding: 40px 40px 0;
     @include flex ($flexdir: row, $justifycont: left, $alignitems: normal);
 
+    @include media-laptop {
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+        padding: 30px 30px 0;
+    }
+
     .footer-content {
         @include flex ($flexdir: row, $justifycont: left, $alignitems: normal);
+        min-height: 310px;
+        padding: 16px 0 60px;
+        @include media-laptop {
+            @include flex ($flexdir: row, $justifycont: space-between, $alignitems: normal);
+            min-height: 299px;
+            padding: 0 34px 65px;
+        }
     }
 
     .footer-column {
-        padding: 16px 0 60px;
-        // margin-right: 150px;
         @include flex ($flexdir: column, $justifycont: space-between);
+        height: 234px;
+        margin: 0;
 
         img {
             display: inline-block;
@@ -291,19 +388,31 @@ footer {
 
         h3 {
             color: $primary;
+
             &:hover {
                 color: white;
                 @include transition (color);
             }
         }
+
         &.one {
             max-width: 438px;
             padding-right: calc(150px - 900px + 100%);
+            @include media-laptop {
+                max-width: 338px;
+                padding-right: 50px;
+            }
         }
+
         &.two {
             max-width: 462px;
             padding-right: calc(150px - 900px + 100%);
+            @include media-laptop {
+                max-width: 302px;
+                padding-right: 0;
+            }
         }
     }
 }
+
 // end of Footer
