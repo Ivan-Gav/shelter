@@ -1,7 +1,11 @@
 header {
     &.pets-header {
         max-width: 1280px;
+        padding: 30px 40px;
         margin: auto;
+        @include media-laptop {
+            padding: 30px 30px;
+        }
     }
 }
 
@@ -52,6 +56,9 @@ header {
     max-width: 1280px;
     margin: auto;
     padding: 80px 40px 100px;
+    @include media-laptop {
+        padding: 80px 30px 76px;
+    }
 }
 
 .gallery-pets {
@@ -63,6 +70,9 @@ header {
         text-align: center;
         max-width: 410px;
         margin: 0 auto 45px;
+        @include media-laptop {
+            margin: 0 auto 28px;
+        }
     }
 }
 
@@ -74,10 +84,17 @@ header {
     max-height: 930px;
     overflow: hidden;
     padding: 15px 0;
+    @include media-laptop {
+        max-height: 1365px;
+        padding: 0;
+    }
 }
 
 .pagination-gallery-pets {
     @include flex ($flexdir: row, $justifycont: center);
     gap: 20px;
-    margin: 45px auto 0;    
+    margin: 45px auto 0;
+    @include media-laptop {
+        margin: 40px auto 0;
+    }    
 }
