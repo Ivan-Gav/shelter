@@ -87,6 +87,9 @@ body {
 
 header {
     @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
+    @include media-tablet {
+        padding: 0 10px 0;
+    }
 }
 
 img {
@@ -98,17 +101,28 @@ img {
 h1 {
     @include font ($size: 4.4rem, $lineheight: 130%);
     color: white;
+    @include media-tablet {
+        font-size: 2.5rem;
+        letter-spacing: 0.06em;
+    }
 }
 
 h2 {
     @include font ($size: 3.5rem, $lineheight: 130%, $spacing: 0.06em);
     color: $dark-l;
+    @include media-tablet {
+        font-size: 2.5rem;
+        text-align: center;
+    }
 }
 
 h3 {
     @include font ($size: 2rem, $lineheight: 115%, $spacing: 0.06em);    
     display: inline;
     color: $dark-l;
+    @include media-tablet {
+        font-size: 2.5rem;
+    }
 }
 
 h4 {

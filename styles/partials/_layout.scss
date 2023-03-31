@@ -10,8 +10,14 @@
     max-width: 1280px;
     padding: 30px 40px 0;
     margin: auto;
+
     @include media-laptop {
         padding: 30px 30px 0;
+    }
+
+    @include media-tablet {
+        padding: 30px 10px 0;
+        min-height: 0;
     }
 }
 
@@ -71,6 +77,18 @@
             }
         }
     }
+
+    @include media-tablet {
+        display: none;
+    }
+}
+
+.burger {
+    display: none;
+
+    @include media-tablet {
+        display: block;
+    }
 }
 
 //end of Header
@@ -85,6 +103,10 @@
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-end);
     }
 
+    @include media-tablet {
+        @include flex ($flexdir: column, $justifycont: flex-start, $alignitems: flex-end);
+    }
+
     .intro-text {
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: left);
         height: 322px;
@@ -93,6 +115,9 @@
 
         h1 {
             max-width: 320px;
+            @include media-tablet {
+                margin: 0 auto;
+            }
         }
 
         p {
@@ -110,6 +135,12 @@
         @include media-laptop {
             margin: 60px auto 100px;
         }
+
+        @include media-tablet {
+            height: 296px;
+            margin: 60px auto 105px;
+            text-align: center;
+        }
     }
 
     .intro-image {
@@ -119,6 +150,10 @@
         img {
             @include media-laptop {
                 width: 569px;
+            }
+
+            @include media-tablet {
+                width: 260px;
             }
         }
 
@@ -141,6 +176,11 @@
         gap: 80px;
     }
 
+    @include media-tablet {
+        padding: 42px 25px;
+        gap: 40px;
+    }
+
 
     .about-text {
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
@@ -151,11 +191,26 @@
         @include media-laptop {
             margin: 0;
         }
+
+        @include media-tablet {
+            @include flex ($flexdir: column, $justifycont: flex-start, $alignitems: center);
+            gap: 24px;
+            min-height: calc(494px - (100% - 320px) / 3);
+            margin: 0;
+            text-align: justify;
+        }
     }
 
     .about-image {
         padding: 0;
         border: none;
+
+        img {
+            @include media-tablet {
+                width: 260px;
+            }
+        }
+
     }
 }
 
@@ -177,6 +232,10 @@
         padding: 80px 30px 100px;
     }
 
+    @include media-tablet {
+        padding: 42px 10px;
+    }
+
     h2 {
         text-align: center;
         max-width: 410px;
@@ -188,12 +247,26 @@
         padding: 60px 0;
         overflow: hidden;
 
+        @include media-tablet {
+            @include flex ($flexdir: row, $justifycont: center, $alignitems: flex-start);
+            flex-wrap: wrap;
+            padding: 42px 15px;
+            min-height: 591px;
+        }
+
         .slider-nav-left {
             width: 105px;
             @include flex ($flexdir: row, $justifycont: left);
 
             @include media-laptop {
                 width: 64px;
+            }
+            @include media-tablet {
+                order: 2;
+                flex-grow: 0;
+                width: $button-height;
+                height: $button-height;
+                margin: 20px 40px 0 40px;
             }
         }
 
@@ -203,6 +276,14 @@
 
             @include media-laptop {
                 width: 64px;
+            }
+
+            @include media-tablet {
+                order: 3;
+                flex-grow: 0;
+                width: $button-height;
+                height: $button-height;
+                margin: 20px 40px 0 40px;
             }
         }
     }
@@ -218,10 +299,20 @@
     @include media-laptop {
         @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
         flex-wrap: nowrap;
-        gap: calc(100% - 540px);
-        width: 580px;
+        gap: 40px;
+        max-width: 580px;
         min-width: 320px;
+        flex-basis: 100%;
         overflow: hidden;
+    }
+
+    @include media-tablet {
+        order: 1;
+        flex-wrap: nowrap;
+        height: 435px;
+        min-width: 270px;
+        overflow: hidden;
+        margin: 0 400px
     }
 }
 
@@ -243,6 +334,10 @@
         padding: 80px 0 100px;
     }
 
+    @include media-tablet {
+        padding: 42px 15px;
+    }
+
     h2 {
         max-width: 410px;
         margin: auto;
@@ -260,7 +355,17 @@
             gap: 55px 60px;
             padding: 60px 0 0;
         }
-    }
+
+        @include media-tablet {
+            @include flex ($flexdir: row, $justifycont: flex-start);
+            margin: auto;
+            width: 290px;
+            gap: 30px;
+            padding: 42px 0 0;
+        }
+
+    }    
+
 
     .badge {
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
@@ -269,15 +374,28 @@
         @include media-laptop {
             min-width: 170px;
         }
+
+        @include media-tablet {
+            min-width: 130px;
+            min-height: 87px;
+        }
     }
 
     p {
         font-family: $georgia;
         @include font ($size: 2rem, $lineheight: 115%, $spacing: 0.06em);
+
+        @include media-tablet {
+            font-size: 1.5rem;
+        }
     }
 
     img {
         width: 60px;
+
+        @include media-tablet {
+            width: 50px;
+        }
     }
 }
 
@@ -300,11 +418,36 @@
         gap: 60px;
     }
 
+    @include media-tablet {
+        padding: 42px 10px;
+        gap: 39px;
+    }
+
     .donation-text {
         width: 380px;
         @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
         gap: 20px;
         padding: 0;
+
+        h4 {
+            @include media-tablet {
+                letter-spacing: normal;
+            }
+        }
+
+        p {
+            @include media-tablet {
+                padding: 0 10px;
+            }
+        }
+
+        @include media-tablet {
+            @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+            width: 320px;
+            padding: 0 10px;
+            gap: 23px;
+            text-align: justify;
+        }
     }
 
     .payment-details {
@@ -316,8 +459,15 @@
         border-radius: 9px;
 
         img {
+            width: 30px;
             display: inline;
             margin-right: 15px;
+        }
+
+        h3 {
+            @include media-tablet {
+                font-size: 1.5rem;
+            }
         }
 
         a:hover {
@@ -334,6 +484,12 @@
         font-family: $arial;
         @include font ($size: 1.2rem, $style: italic, $lineheight: 150%);
         color: $dark-m;
+    }
+
+    img {
+        @include media-tablet {
+            width: 260px;
+        }
     }
 }
 
@@ -355,14 +511,24 @@ footer {
         padding: 30px 30px 0;
     }
 
+    @include media-tablet {
+        padding: 30px 10px 0;
+    }
+
     .footer-content {
         @include flex ($flexdir: row, $justifycont: left, $alignitems: normal);
         min-height: 310px;
         padding: 16px 0 60px;
+
         @include media-laptop {
             @include flex ($flexdir: row, $justifycont: space-between, $alignitems: normal);
             min-height: 299px;
             padding: 0 34px 65px;
+        }
+
+        @include media-tablet {
+            @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+            padding: 0;
         }
     }
 
@@ -370,6 +536,11 @@ footer {
         @include flex ($flexdir: column, $justifycont: space-between);
         height: 234px;
         margin: 0;
+
+        @include media-tablet {
+            @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
+            height: unset;
+        }
 
         img {
             display: inline-block;
@@ -393,23 +564,50 @@ footer {
                 color: white;
                 @include transition (color);
             }
+
+            @include media-tablet {
+                font-size: 2rem;
+            }
         }
 
         &.one {
             max-width: 438px;
             padding-right: calc(150px - 900px + 100%);
+
             @include media-laptop {
                 max-width: 338px;
                 padding-right: 50px;
+            }
+
+            @include media-tablet {
+                padding-right: 0;
+                padding-bottom: 40px;
+                height: 248px;
             }
         }
 
         &.two {
             max-width: 462px;
             padding-right: calc(150px - 900px + 100%);
-            @include media-laptop {
+
+            .footer-item {
+                @include media-tablet {
+                    align-self: flex-start;
+                }
+            }
+
+            @include media-tablet {
                 max-width: 302px;
                 padding-right: 0;
+                height: 222px;
+                margin-bottom: 40px;
+            }
+        }
+    }
+    .footer-image {
+        img {
+            @include media-tablet {
+                width: 260px;
             }
         }
     }
