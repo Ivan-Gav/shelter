@@ -13,18 +13,14 @@ $dark-3xl: #292929;
 
 $laptop-width: 1064px;
 $tablet-width: 760px;
-$mobile-width: 414px;
 
-@mixin media-laptop {
+
+@mixin media-tablet {
     @media screen and (max-width: $laptop-width) { @content; }
 }
 
-@mixin media-tablet {
-    @media screen and (max-width: $tablet-width) { @content; }
-}
-
 @mixin media-mobile {
-    @media screen and (max-width: $mobile-width) { @content; }
+    @media screen and (max-width: $tablet-width) { @content; }
 }
 
 @mixin transition ($prop: all) {
@@ -87,7 +83,7 @@ body {
 
 header {
     @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
-    @include media-tablet {
+    @include media-mobile {
         padding: 0 10px 0;
     }
 }
@@ -101,7 +97,7 @@ img {
 h1 {
     @include font ($size: 4.4rem, $lineheight: 130%);
     color: white;
-    @include media-tablet {
+    @include media-mobile {
         font-size: 2.5rem;
         letter-spacing: 0.06em;
     }
@@ -110,7 +106,7 @@ h1 {
 h2 {
     @include font ($size: 3.5rem, $lineheight: 130%, $spacing: 0.06em);
     color: $dark-l;
-    @include media-tablet {
+    @include media-mobile {
         font-size: 2.5rem;
         text-align: center;
     }
@@ -120,7 +116,7 @@ h3 {
     @include font ($size: 2rem, $lineheight: 115%, $spacing: 0.06em);    
     display: inline;
     color: $dark-l;
-    @include media-tablet {
+    @include media-mobile {
         font-size: 2.5rem;
     }
 }
