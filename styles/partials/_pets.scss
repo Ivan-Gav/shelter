@@ -3,6 +3,15 @@ header {
         max-width: 1280px;
         padding: 30px 40px;
         margin: auto;
+        
+        .burger {
+        &:before, &:after {
+            background-color: black;
+        }
+        }
+        .burger-line {
+            background-color: black;
+        }
         @include media-tablet {
             padding: 30px 30px;
         }

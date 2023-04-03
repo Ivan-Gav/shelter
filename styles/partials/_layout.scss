@@ -83,14 +83,6 @@
     }
 }
 
-.burger {
-    display: none;
-
-    @include media-mobile {
-        display: block;
-    }
-}
-
 //end of Header
 
 // Section Intro (Not only...) 

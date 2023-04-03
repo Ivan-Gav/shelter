@@ -180,6 +180,40 @@ button.round-button:hover {
   transition: background-color 0.3s ease-in;
 }
 
+.burger-line, .burger:after, .burger:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: #F1CDB3;
+  height: 2px;
+  width: 100%;
+}
+
+.burger {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 22px;
+}
+@media screen and (max-width: 760px) {
+  .burger {
+    display: block;
+  }
+}
+.burger:before {
+  top: 0;
+  left: 0;
+}
+.burger:after {
+  bottom: 0;
+  left: 0;
+}
+
+.burger-line {
+  top: calc(50% - 1px);
+  left: 0;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -307,15 +341,6 @@ button.round-button:hover {
 @media screen and (max-width: 760px) {
   .main-menu {
     display: none;
-  }
-}
-
-.burger {
-  display: none;
-}
-@media screen and (max-width: 760px) {
-  .burger {
-    display: block;
   }
 }
 
@@ -918,6 +943,12 @@ header.pets-header {
   max-width: 1280px;
   padding: 30px 40px;
   margin: auto;
+}
+header.pets-header .burger:before, header.pets-header .burger:after {
+  background-color: black;
+}
+header.pets-header .burger-line {
+  background-color: black;
 }
 @media screen and (max-width: 1064px) {
   header.pets-header {
