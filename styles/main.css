@@ -245,7 +245,7 @@ button.round-button:hover {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 184px;
+  min-width: 184px;
   height: 60px;
 }
 
@@ -397,7 +397,8 @@ button.round-button:hover {
 }
 @media screen and (max-width: 760px) {
   .intro .intro-image img {
-    width: 260px;
+    width: calc(260px + (100% - 300px) * 0.69);
+    margin-left: auto;
   }
 }
 

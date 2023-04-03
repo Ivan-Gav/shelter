@@ -24,7 +24,7 @@
 // Header
 .logo {
     @include flex ($flexdir: column, $justifycont: space-between, $alignitems: center);
-    width: 184px;
+    min-width: 184px;
     height: 60px;
 }
 
@@ -146,14 +146,15 @@
     .intro-image {
         padding: 0;
         border: none;
-
+        
         img {
             @include media-tablet {
                 width: 569px;
             }
 
             @include media-mobile {
-                width: 260px;
+                width: calc(260px + ((100% - 300px) * 0.69));
+                margin-left: auto;
             }
         }
 
