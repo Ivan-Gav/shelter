@@ -12,7 +12,7 @@ $dark-xl: #4C4C4C;
 $dark-3xl: #292929;
 
 $laptop-width: 1064px;
-$tablet-width: 760px;
+$tablet-width: 767px;
 
 
 @mixin media-tablet {
@@ -24,7 +24,7 @@ $tablet-width: 760px;
 }
 
 @mixin transition ($prop: all) {
-    transition: $prop 0.3s ease-in;
+    transition: $prop 0.5s ease-in;
 }
 
 @mixin font ($size, $weight: 400, $style: normal, $lineheight: $size, $spacing: normal) {
@@ -133,3 +133,4 @@ p {
     color: $dark-xl;
     margin: 0;
 }
+

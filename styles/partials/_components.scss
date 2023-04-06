@@ -36,11 +36,13 @@ button {
         width: $button-height;
         padding: 15px 15px;
         font-weight: bold;
+
         &.inactive {
             color: $dark-s;
             border-color: $dark-s;
             pointer-events: none;
         }
+
         &.active {
             background-color: $primary;
             border-color: $primary;
@@ -48,11 +50,12 @@ button {
             @include font ($size: 2rem, $weight: 400);
 
         }
+
         &:hover {
             background-color: $primary-l;
             border-color: $primary-l;
             @include transition (background-color);
-        }        
+        }
     }
 
 }
@@ -63,33 +66,42 @@ button {
     position: absolute;
     background-color: $primary;
     height: 2px;
-    width: 100%; 
+    width: 100%;
 }
 
 .burger {
     display: none;
     position: relative;
+    z-index: 80;
     width: 30px;
     height: 22px;
+    transform: rotate(0);
+    @include transition (transform);
+
     @include media-mobile {
         display: block;
     }
-    &:before {
-        @extend %burger-line;
-        top: 0;
-        left: 0;
-    } 
-    &:after {
-        @extend %burger-line;
-        bottom: 0;
-        left: 0;
-    }    
+
+    &.active {
+        transform: rotate(90deg);
+        @include transition (transform);
+    }
 }
 
 .burger-line {
     @extend %burger-line;
     top: calc(50% - 1px);
     left: 0;
+    
+    &:before {
+        @extend %burger-line;
+        transform: translateY(-10px);
+    }
+
+    &:after {
+        @extend %burger-line;
+        transform: translateY(10px);
+    }
 }
 
 .card {
@@ -121,4 +133,35 @@ button {
             @include transition (background-color);
         }
     }
+}
+
+// Подложка меню и модалок
+.overlay {
+    position: fixed;
+    border: none;
+    display: block;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    // z-index: 98;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+    background-color: black;
+
+    &.active {
+        pointer-events: auto;
+        opacity: 0.6;
+        @include transition(opacity);
+    }
+}
+
+.disable-scroll {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
 }

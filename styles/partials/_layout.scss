@@ -1,5 +1,5 @@
 // Initial screen
-.initial-screen {
+#initial-screen {
     background-image: url(../images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 
 }
@@ -49,9 +49,8 @@
 
 .main-menu {
     ul {
-        display: flex;
+        @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
         gap: 35px;
-        align-items: center;
         list-style: none;
 
         li {
@@ -70,23 +69,45 @@
                 border-bottom: 3px solid $primary;
             }
 
-            &.act {
+            &.active-menu-item {
                 color: $light-s;
                 border-bottom: 3px solid $primary;
-                pointer-events: none;
+                // pointer-events: none;
+            }
+        }
+
+        @include media-mobile {
+            // display: none;
+            position: fixed;
+            z-index: 70;
+            width: 320px;
+            overflow: hidden;
+            @include transition (right);
+            height: 100%;
+            top: 0;
+            right: -330px;
+            @include flex ($flexdir: column, $justifycont: center, $alignitems: center);
+            gap: 40px;
+            background-color: $dark-3xl;
+
+            &.active {
+                right: 0;
+                @include transition (right);  
+            }
+
+            li {
+                @include font ($size: 3.2rem, $lineheight: 160%);
             }
         }
     }
 
-    @include media-mobile {
-        display: none;
-    }
+
 }
 
 //end of Header
 
 // Section Intro (Not only...) 
-.intro {
+#intro {
     @include flex ($flexdir: row, $justifycont: space-between);
     gap: calc(42px - calc(1280px - 100%)/10);
     padding: 0;
@@ -107,6 +128,7 @@
 
         h1 {
             max-width: 320px;
+
             @include media-mobile {
                 margin: 0 auto;
             }
@@ -138,7 +160,7 @@
     .intro-image {
         padding: 0;
         border: none;
-        
+
         img {
             @include media-tablet {
                 width: 569px;
@@ -254,6 +276,7 @@
             @include media-tablet {
                 width: 64px;
             }
+
             @include media-mobile {
                 order: 2;
                 flex-grow: 0;
@@ -357,7 +380,7 @@
             padding: 42px 0 0;
         }
 
-    }    
+    }
 
 
     .badge {
@@ -597,6 +620,7 @@ footer {
             }
         }
     }
+
     .footer-image {
         img {
             @include media-mobile {
