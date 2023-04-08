@@ -121,6 +121,7 @@ const frameCenter = document.querySelector('.frame-center')
 let petsOnScreenJson = []
 let nextPetsOnScreenJson = []
 let numberOfCards
+let petsBuffer
 
 let lastClicked
 
@@ -178,7 +179,10 @@ const showCards = (array, frame) => {
 
 const start = () => {
   emptyFrame(frameCenter)
-  generateCurrentFrame()
+  mediaQuery()
+  petsOnScreenJson = petsJsonArray.slice(0, numberOfCards)
+  petsBuffer = petsOnScreenJson.slice()
+  showCards(petsOnScreenJson, frameCenter)
   nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
   generateNextFrame(nextPetsOnScreenJson)
 }
@@ -213,12 +217,6 @@ const mediaQuery = () => {
 
 //------------------------------------------------------------------------------------------------
 
-const generateCurrentFrame = () => {
-  mediaQuery()
-  petsOnScreenJson = petsJsonArray.slice(0, numberOfCards)
-  showCards(petsOnScreenJson, frameCenter)
-}
-
 const generateNextPetsJsonArray = (arrayJson) => {
   const result = randomizeArray(petsJsonArray)
   return result.filter(pet => !arrayJson.includes(pet)).slice(0, arrayJson.length)
@@ -227,7 +225,6 @@ const generateNextPetsJsonArray = (arrayJson) => {
 const generateNextFrame = (arrayJson) => {
   showCards(arrayJson, frameLeft)
   showCards(arrayJson, frameRight)
-  // petsOnScreenJson = nextFrame.slice()
 }
 
 start()
@@ -242,13 +239,39 @@ const slider = document.querySelector('.slider-frames');
 
 
 const slideLeft = () => {
+  console.log('petsBuffer when clicked')
+  console.log(petsBuffer)
+  emptyFrame(frameLeft)
+  emptyFrame(frameRight)
+  if (lastClicked === 'r') {
+    nextPetsOnScreenJson = petsBuffer.slice()
+
+    generateNextFrame(nextPetsOnScreenJson)
+  } else {
+    nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
+    generateNextFrame(nextPetsOnScreenJson)
+  }
+  petsBuffer = petsOnScreenJson.slice()
+  lastClicked = 'l'
   slider.classList.add("slide-left")
   sliderLeftButton.removeEventListener("click", slideLeft)
   sliderRightButton.removeEventListener("click", slideRight)
 }
 
 const slideRight = () => {
-  // lastClicked = 'r'
+  console.log('petsBuffer when clicked')
+  console.log(petsBuffer)
+  emptyFrame(frameLeft)
+  emptyFrame(frameRight)
+  if (lastClicked === 'l') {
+    nextPetsOnScreenJson = petsBuffer.slice()
+    generateNextFrame(nextPetsOnScreenJson)
+  } else {
+    nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
+    generateNextFrame(nextPetsOnScreenJson)
+  }
+  petsBuffer = petsOnScreenJson.slice()
+  lastClicked = 'r'
   slider.classList.add("slide-right")
   sliderLeftButton.removeEventListener("click", slideLeft)
   sliderRightButton.removeEventListener("click", slideRight)
@@ -267,11 +290,7 @@ slider.addEventListener("animationend", (animationEvent) => {
     frameCenter.innerHTML = frameLeft.innerHTML
   }
 
-  emptyFrame(frameLeft)
-  emptyFrame(frameRight)
   petsOnScreenJson = nextPetsOnScreenJson.slice()
-  nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
-  generateNextFrame(nextPetsOnScreenJson)
 
   sliderLeftButton.addEventListener("click", slideLeft)
   sliderRightButton.addEventListener("click", slideRight)
