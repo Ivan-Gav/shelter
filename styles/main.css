@@ -174,10 +174,12 @@ button.round-button.active {
   line-height: 2rem;
   letter-spacing: normal;
 }
-button.round-button:hover {
-  background-color: #FDDCC4;
-  border-color: #FDDCC4;
-  transition: background-color 0.5s ease-in;
+@media (any-hover: hover) {
+  button.round-button:hover {
+    background-color: #FDDCC4;
+    border-color: #FDDCC4;
+    transition: background-color 0.5s ease-in;
+  }
 }
 
 .burger-line:after, .burger-line:before, .burger-line {
@@ -578,7 +580,7 @@ button.round-button:hover {
 .slider-container .slider-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 60px 0;
   overflow: hidden;
@@ -595,7 +597,7 @@ button.round-button:hover {
   }
 }
 .slider-container .slider-wrapper .slider-nav-left {
-  min-width: 105px;
+  min-width: 60px;
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -603,7 +605,7 @@ button.round-button:hover {
 }
 @media screen and (max-width: 1064px) {
   .slider-container .slider-wrapper .slider-nav-left {
-    min-width: 64px;
+    min-width: 52px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -616,7 +618,7 @@ button.round-button:hover {
   }
 }
 .slider-container .slider-wrapper .slider-nav-right {
-  min-width: 105px;
+  min-width: 60px;
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -624,7 +626,7 @@ button.round-button:hover {
 }
 @media screen and (max-width: 1064px) {
   .slider-container .slider-wrapper .slider-nav-right {
-    min-width: 64px;
+    min-width: 52px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -640,11 +642,9 @@ button.round-button:hover {
 .slider-body {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  gap: calc(90px - (990px - 100%) / 2);
-  width: 100%;
-  min-width: 880px;
+  width: 1080px;
   position: relative;
   overflow: hidden;
 }
@@ -652,14 +652,9 @@ button.round-button:hover {
   .slider-body {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: 40px;
-    max-width: 580px;
-    min-width: 320px;
-    flex-basis: 100%;
-    overflow: hidden;
+    width: 620px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -672,18 +667,31 @@ button.round-button:hover {
     margin: 0 400px;
   }
 }
-@keyframes slide-right {
-  from {
-    left: 0;
-  }
-  to {
-    left: 990px;
+
+.slider-frames {
+  width: 300%;
+  max-height: 435px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 1080px;
+  height: 100%;
+}
+@media screen and (max-width: 1064px) {
+  .frame {
+    width: 620px;
   }
 }
-.slider-body.transition-right {
-  animation-name: slide-right;
-  animation-duration: 2s;
-}
+
 @keyframes slide-left {
   from {
     left: 0;
@@ -692,8 +700,21 @@ button.round-button:hover {
     left: 100%;
   }
 }
-.slider-body.transition-left {
+@keyframes slide-right {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+.slide-left {
   animation-name: slide-left;
+  animation-duration: 2s;
+}
+
+.slide-right {
+  animation-name: slide-right;
   animation-duration: 2s;
 }
 

@@ -1,4 +1,4 @@
-const initialPetsArray = [
+const petJsonInitialArray = [
   {
     "id": 1,
     "name": "Jennifer",
@@ -97,7 +97,10 @@ const initialPetsArray = [
   }
 ]
 
-const randomizeArray = (arr) => {
+// ----------------------------------------------------------------------------------------------------
+
+const randomizeArray = (array) => {
+  const arr = array.slice()
   const randomizedArr = []
   const length = arr.length
   for (let index = 0; index < length; index++) {
@@ -108,33 +111,41 @@ const randomizeArray = (arr) => {
   return randomizedArr
 }
 
-const petsArray = randomizeArray(initialPetsArray)
-const sliderBody = document.querySelector('.slider-body')
+const petsJsonArray = randomizeArray(petJsonInitialArray)
 
-let currentFrame = []
-let previousFrame = []
+const sliderBody = document.querySelector('.slider-body')
+const frameLeft = document.querySelector('.frame-left')
+const frameRight = document.querySelector('.frame-right')
+const frameCenter = document.querySelector('.frame-center')
+
+let petsOnScreenJson = []
+let nextPetsOnScreenJson = []
+let numberOfCards
+
 let lastClicked
 
+// ----------------------------------------------------------------------------------------------------
+
 class Card {
-  constructor({id, name, img, type, breed, description, age, inoculations, diseases, parasites}) {
+  constructor({ id, name, img, type, breed, description, age, inoculations, diseases, parasites }) {
     this.id = id
     this.name = name
     this.img = img
   }
 
-  generateCard () {
+  generateCard() {
     let template = ''
     let card = document.createElement('div')
     card.className = 'card'
     card.setAttribute('data-id', this.id)
 
     // if (this.img) {
-      template += `<div><img src=${this.img} alt="Look how cute I am"></div>`        
+    template += `<div><img src=${this.img} alt="Look how cute I am"></div>`
     // }
 
     // if (this.name) {
-      template += `<p>${this.name}</p>`
-      template += `<button class="button-secondary">Learn more</button>`
+    template += `<p>${this.name}</p>`
+    template += `<button class="button-secondary">Learn more</button>`
     // }
 
     card.innerHTML = template
@@ -143,104 +154,125 @@ class Card {
   }
 }
 
-const generateCards = (petsArray) => {
+// ----------------------------------------------------------------------------------------------------
+
+const generateCards = (petJsonArray) => {
   const cards = []
-  petsArray.forEach(pet => {
-    let petObject = new Card(pet)
-    cards.push(petObject.generateCard())
+  petJsonArray.forEach(pet => {
+    let petCard = new Card(pet)
+    cards.push(petCard.generateCard())
   })
   return cards
 }
 
-const emptySliderBody = () => {
-  sliderBody.innerHTML = ''
-  return sliderBody
+const emptyFrame = (frame) => {
+  frame.innerHTML = ''
+  return frame
 }
 
-const showCards = (array, action) => {
+const showCards = (array, frame) => {
   generateCards(array).forEach(card => {
-    (action === 'append') ? sliderBody.append(card) : sliderBody.prepend(card)
+    frame.append(card)
   })
 }
 
-const generateCurrentFrame = () => {
-  // check these breakpoints when changing $laptop-width and $tablet-width settings in base.scss
-    if (window.matchMedia("(max-width: 767px)").matches) {
-    currentFrame = petsArray.slice(0, 1)
-  } else if (window.matchMedia("(max-width: 1064px)").matches) {
-    currentFrame = petsArray.slice(0, 2)
+const start = () => {
+  emptyFrame(frameCenter)
+  generateCurrentFrame()
+  nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
+  generateNextFrame(nextPetsOnScreenJson)
+}
+
+// Media queries --------------------------------------------------------------------------------
+// check these breakpoints when changing $laptop-width and $tablet-width settings in base.scss
+
+window.matchMedia('(max-width: 1064px)').addEventListener('change', () => {
+  emptyFrame(frameLeft)
+  emptyFrame(frameRight)
+  start()
+  console.log('change 1064px')
+})
+
+window.matchMedia('(max-width: 767px)').addEventListener('change', () => {
+  emptyFrame(frameLeft)
+  emptyFrame(frameRight)
+  start()
+  console.log('change 768px')
+})
+
+const mediaQuery = () => {
+
+  if (window.innerWidth <= 767) {
+    numberOfCards = 1
+  } else if (window.innerWidth <= 1064) {
+    numberOfCards = 2
   } else {
-    currentFrame = [...petsArray.slice(0, 3),...petsArray.slice(0, 3), ...petsArray.slice(0, 3)]
+    numberOfCards = 3
   }
-  showCards(currentFrame)
 }
 
-const filterAvailablePets = () => {
-  return petsArray.filter(pet => !currentFrame.includes(pet))
+//------------------------------------------------------------------------------------------------
+
+const generateCurrentFrame = () => {
+  mediaQuery()
+  petsOnScreenJson = petsJsonArray.slice(0, numberOfCards)
+  showCards(petsOnScreenJson, frameCenter)
 }
 
-const generateNextFrame = (action) => {
-  const nextFrame = filterAvailablePets().slice(0, currentFrame.length)
-  showCards(nextFrame, action) 
-  currentFrame = nextFrame.slice()
+const generateNextPetsJsonArray = (arrayJson) => {
+  const result = randomizeArray(petsJsonArray)
+  return result.filter(pet => !arrayJson.includes(pet)).slice(0, arrayJson.length)
 }
 
-emptySliderBody()
-generateCurrentFrame()
+const generateNextFrame = (arrayJson) => {
+  showCards(arrayJson, frameLeft)
+  showCards(arrayJson, frameRight)
+  // petsOnScreenJson = nextFrame.slice()
+}
+
+start()
 
 
-// --------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------
 
 const sliderLeftButton = document.querySelector('.slider-nav-left').firstElementChild
 const sliderRightButton = document.querySelector('.slider-nav-right').firstElementChild
-const slider = document.querySelector(".slider-body");
+const slider = document.querySelector('.slider-frames');
 
 
 
-// const slideLeft = () => {
-//   slider.classList.add("transition-left")
-//   sliderLeftButton.removeEventListener("click", slideLeft)
-//   sliderRightButton.removeEventListener("click", slideRight)
-// }
-
-const slideRight = () => {
-  if (lastClicked !== 'l') {
-  previousFrame = currentFrame.slice()
-  generateNextFrame('prepend')
-  } else {
-  const buffer = previousFrame.slice()
-  previousFrame = currentFrame.slice()
-  currentFrame = buffer.slice()
-  }
-  lastClicked = 'r'
-  slider.classList.add("transition-right")
-  // sliderLeftButton.removeEventListener("click", slideLeft)
-  // sliderRightButton.removeEventListener("click", slideRight)
+const slideLeft = () => {
+  slider.classList.add("slide-left")
+  sliderLeftButton.removeEventListener("click", slideLeft)
+  sliderRightButton.removeEventListener("click", slideRight)
 }
 
-// sliderLeftButton.addEventListener("click", slideLeft)
+const slideRight = () => {
+  // lastClicked = 'r'
+  slider.classList.add("slide-right")
+  sliderLeftButton.removeEventListener("click", slideLeft)
+  sliderRightButton.removeEventListener("click", slideRight)
+}
 
+sliderLeftButton.addEventListener("click", slideLeft)
 sliderRightButton.addEventListener("click", slideRight)
 
-// slider.addEventListener("animationend", (animationEvent) => {
-//   let previousFrame;
-//   if (animationEvent.animationName === "slide-left") {
-//     slider.classList.remove("transition-left");
-//     previousFrame = ITEM_LEFT;
-//     document.querySelector("#item-active").innerHTML = ITEM_LEFT.innerHTML;
-//   } else {
-//     slider.classList.remove("transition-right");
-//     previousFrame = ITEM_RIGHT;
-//     document.querySelector("#item-active").innerHTML = ITEM_RIGHT.innerHTML;
-//   }
-  
-//   previousFrame.innerHTML = "";
-//   for (let i = 0; i < 3; i++) {
-//     const card = createCardTemplate();
-//     card.innerText = Math.floor(Math.random() * 8);
-//     previousFrame.appendChild(card);
-//   }
-  
-//   BTN_LEFT.addEventListener("click", moveLeft);
-//   BTN_RIGHT.addEventListener("click", moveRight);
-// })
+slider.addEventListener("animationend", (animationEvent) => {
+
+  if (animationEvent.animationName === "slide-left") {
+    slider.classList.remove("slide-left")
+    frameCenter.innerHTML = frameRight.innerHTML
+  } else {
+    slider.classList.remove("slide-right")
+    frameCenter.innerHTML = frameLeft.innerHTML
+  }
+
+  emptyFrame(frameLeft)
+  emptyFrame(frameRight)
+  petsOnScreenJson = nextPetsOnScreenJson.slice()
+  nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
+  generateNextFrame(nextPetsOnScreenJson)
+
+  sliderLeftButton.addEventListener("click", slideLeft)
+  sliderRightButton.addEventListener("click", slideRight)
+})

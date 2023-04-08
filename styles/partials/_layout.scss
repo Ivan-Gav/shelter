@@ -258,7 +258,7 @@
     }
 
     .slider-wrapper {
-        @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
+        @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
         padding: 60px 0;
         overflow: hidden;
 
@@ -270,11 +270,11 @@
         }
 
         .slider-nav-left {
-            min-width: 105px;
+            min-width: 60px;
             @include flex ($flexdir: row, $justifycont: left);
 
             @include media-tablet {
-                min-width: 64px;
+                min-width: 52px;
             }
 
             @include media-mobile {
@@ -287,11 +287,11 @@
         }
 
         .slider-nav-right {
-            min-width: 105px;
+            min-width: 60px;
             @include flex ($flexdir: row, $justifycont: right);
 
             @include media-tablet {
-               min-width: 64px;
+               min-width: 52px;
             }
 
             @include media-mobile {
@@ -307,21 +307,18 @@
 
 
 .slider-body {
-    @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
-    gap: calc(90px - calc(990px - 100%)/2);
-    width: 100%;
-    min-width: 880px;
+    @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
+    // gap: calc(90px - calc(990px - 100%)/2);
+    width: 1080px;
+    // min-width: 880px;
     position: relative;
     overflow: hidden;
 
     @include media-tablet {
-        @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
-        flex-wrap: nowrap;
-        gap: 40px;
-        max-width: 580px;
-        min-width: 320px;
-        flex-basis: 100%;
-        overflow: hidden;
+        @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
+        // flex-wrap: nowrap;
+        // gap: 40px;
+        width: 620px;
     }
 
     @include media-mobile {
@@ -332,27 +329,54 @@
         overflow: hidden;
         margin: 0 400px
     }
-
-    @keyframes slide-right {
-        from {left: 0;}
-        to {left: 990px;}
-      }
-      
-      &.transition-right {
-        animation-name: slide-right;
-        animation-duration: 2s;
-      }
-      
-      @keyframes slide-left {
-        from {left: 0;}
-        to {left: 100%;}
-      }
-      
-      &.transition-left {
-        animation-name: slide-left;
-        animation-duration: 2s;
-      }
 }
+
+.slider-frames {
+    width: 300%;
+    max-height: 435px;
+    position: relative;
+    @include flex ($flexdir: row, $justifycont: space-between, $alignitems: center);
+
+}
+
+.frame {
+    @include flex ($flexdir: row, $justifycont: space-around, $alignitems: center);
+    // gap: calc(90px - calc(990px - 100%)/2);
+    width: 1080px;
+    height: 100%;
+    // min-width: 880px;
+    
+    @include media-tablet {
+
+        // flex-wrap: nowrap;
+        // gap: 40px;
+        width: 620px;
+    }
+}
+
+// Slider animation
+
+@keyframes slide-left {
+    from {left: 0}
+    to {left: +100%} 
+}
+
+@keyframes slide-right {
+    from {left: 0}
+    to {left: -100%} 
+}
+
+.slide-left {
+    animation-name: slide-left;
+    animation-duration: 2s;
+}
+
+.slide-right {
+    animation-name: slide-right;
+    animation-duration: 2s;
+}
+
+// end of Slider animation
 
 .slider-footer {
     button {

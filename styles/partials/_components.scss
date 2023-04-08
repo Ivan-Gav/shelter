@@ -51,10 +51,12 @@ button {
 
         }
 
-        &:hover {
-            background-color: $primary-l;
-            border-color: $primary-l;
-            @include transition (background-color);
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $primary-l;
+                border-color: $primary-l;
+                @include transition (background-color);
+            }
         }
     }
 
@@ -92,7 +94,7 @@ button {
     @extend %burger-line;
     top: calc(50% - 1px);
     left: 0;
-    
+
     &:before {
         @extend %burger-line;
         transform: translateY(-10px);
