@@ -21,12 +21,6 @@ const toggleBurgerMenu = () => {
     body.classList.toggle('disable-scroll')
 }
 
-const addOverlay = (element) => {
-    element.insertAdjacentHTML('beforebegin', '<div class="overlay">')
-    element.insertAdjacentHTML('afterend', '<div>')
-    return document.querySelector('.overlay')
-}
-
 const hideBurgerMenu = () => {
     document.querySelector('.overlay').classList.remove('active')
     burger.classList.remove('active')
@@ -34,4 +28,15 @@ const hideBurgerMenu = () => {
     body.classList.remove('disable-scroll')
 }
 
-    activateBurgerMenu()
+const addOverlay = (element) => {
+    element.insertAdjacentHTML('beforebegin', '<div class="overlay">')
+    element.insertAdjacentHTML('afterend', '<div>')
+    return document.querySelector('.overlay')
+}
+
+activateBurgerMenu()
+
+// ------------------------------------------------------
+
+
+

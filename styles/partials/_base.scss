@@ -13,7 +13,7 @@ $dark-3xl: #292929;
 
 $laptop-width: 1064px;
 $tablet-width: 767px;
-
+// when changing $laptop-width $tablet-width, change mediaqueries in slider.js accordingly
 
 @mixin media-tablet {
     @media screen and (max-width: $laptop-width) { @content; }

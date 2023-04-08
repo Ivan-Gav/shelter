@@ -270,34 +270,34 @@
         }
 
         .slider-nav-left {
-            width: 105px;
+            min-width: 105px;
             @include flex ($flexdir: row, $justifycont: left);
 
             @include media-tablet {
-                width: 64px;
+                min-width: 64px;
             }
 
             @include media-mobile {
                 order: 2;
                 flex-grow: 0;
-                width: $button-height;
+                min-width: $button-height;
                 height: $button-height;
                 margin: 20px 40px 0 40px;
             }
         }
 
         .slider-nav-right {
-            width: 105px;
+            min-width: 105px;
             @include flex ($flexdir: row, $justifycont: right);
 
             @include media-tablet {
-                width: 64px;
+               min-width: 64px;
             }
 
             @include media-mobile {
                 order: 3;
                 flex-grow: 0;
-                width: $button-height;
+                min-width: $button-height;
                 height: $button-height;
                 margin: 20px 40px 0 40px;
             }
@@ -307,10 +307,12 @@
 
 
 .slider-body {
-    @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
-    gap: calc(90px - calc(1021px - 100%)/2);
+    @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
+    gap: calc(90px - calc(990px - 100%)/2);
     width: 100%;
     min-width: 880px;
+    position: relative;
+    overflow: hidden;
 
     @include media-tablet {
         @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: center);
@@ -330,6 +332,26 @@
         overflow: hidden;
         margin: 0 400px
     }
+
+    @keyframes slide-right {
+        from {left: 0;}
+        to {left: 990px;}
+      }
+      
+      &.transition-right {
+        animation-name: slide-right;
+        animation-duration: 2s;
+      }
+      
+      @keyframes slide-left {
+        from {left: 0;}
+        to {left: 100%;}
+      }
+      
+      &.transition-left {
+        animation-name: slide-left;
+        animation-duration: 2s;
+      }
 }
 
 .slider-footer {

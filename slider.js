@@ -1,0 +1,246 @@
+const initialPetsArray = [
+  {
+    "id": 1,
+    "name": "Jennifer",
+    "img": "images/pets-jennifer.png",
+    "type": "Dog",
+    "breed": "Labrador",
+    "description": "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
+    "age": "2 months",
+    "inoculations": ["none"],
+    "diseases": ["none"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 2,
+    "name": "Sophia",
+    "img": "images/pets-sophia.png",
+    "type": "Dog",
+    "breed": "Shih tzu",
+    "description": "Sophia here and I'm looking for my forever home to live out the best years of my life. I am full of energy. Everyday I'm learning new things, like how to walk on a leash, go potty outside, bark and play with toys and I still need some practice.",
+    "age": "1 month",
+    "inoculations": ["parvovirus"],
+    "diseases": ["none"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 3,
+    "name": "Woody",
+    "img": "images/pets-woody.png",
+    "type": "Dog",
+    "breed": "Golden Retriever",
+    "description": "Woody is a handsome 3 1/2 year old boy. Woody does know basic commands and is a smart pup. Since he is on the stronger side, he will learn a lot from your training. Woody will be happier when he finds a new family that can spend a lot of time with him.",
+    "age": "3 years 6 months",
+    "inoculations": ["adenovirus", "distemper"],
+    "diseases": ["right back leg mobility reduced"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 4,
+    "name": "Scarlett",
+    "img": "images/pets-scarlett.png",
+    "type": "Dog",
+    "breed": "Jack Russell Terrier",
+    "description": "Scarlett is a happy, playful girl who will make you laugh and smile. She forms a bond quickly and will make a loyal companion and a wonderful family dog or a good companion for a single individual too since she likes to hang out and be with her human.",
+    "age": "3 months",
+    "inoculations": ["parainfluenza"],
+    "diseases": ["none"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 5,
+    "name": "Katrine",
+    "img": "images/pets-katrine.png",
+    "type": "Cat",
+    "breed": "British Shorthair",
+    "description": "Katrine is a beautiful girl. She is as soft as the finest velvet with a thick lush fur. Will love you until the last breath she takes as long as you are the one. She is picky about her affection. She loves cuddles and to stretch into your hands for a deeper relaxations.",
+    "age": "6 months",
+    "inoculations": ["panleukopenia"],
+    "diseases": ["none"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 6,
+    "name": "Timmy",
+    "img": "images/pets-timmy.png",
+    "type": "Cat",
+    "breed": "British Shorthair",
+    "description": "Timmy is an adorable grey british shorthair male. He loves to play and snuggle. He is neutered and up to date on age appropriate vaccinations. He can be chatty and enjoys being held. Timmy has a lot to say and wants a person to share his thoughts with.",
+    "age": "2 years 3 months",
+    "inoculations": ["calicivirus", "viral rhinotracheitis"],
+    "diseases": ["kidney stones"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 7,
+    "name": "Freddie",
+    "img": "images/pets-freddie.png",
+    "type": "Cat",
+    "breed": "British Shorthair",
+    "description": "Freddie is a little shy at first, but very sweet when he warms up. He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms of his human’s daily life. Freddie has bounced around a lot in his life, and is looking to find his forever home.",
+    "age": "2 months",
+    "inoculations": ["rabies"],
+    "diseases": ["none"],
+    "parasites": ["none"]
+  },
+  {
+    "id": 8,
+    "name": "Charly",
+    "img": "images/pets-charly.png",
+    "type": "Dog",
+    "breed": "Jack Russell Terrier",
+    "description": "This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.",
+    "age": "8 years",
+    "inoculations": ["bordetella bronchiseptica", "leptospirosis"],
+    "diseases": ["deafness", "blindness"],
+    "parasites": ["lice", "fleas"]
+  }
+]
+
+const randomizeArray = (arr) => {
+  const randomizedArr = []
+  const length = arr.length
+  for (let index = 0; index < length; index++) {
+    let randomIndex = Math.floor(Math.random() * arr.length)
+    randomizedArr.push(arr[randomIndex])
+    arr.splice(randomIndex, 1)
+  }
+  return randomizedArr
+}
+
+const petsArray = randomizeArray(initialPetsArray)
+const sliderBody = document.querySelector('.slider-body')
+
+let currentFrame = []
+let previousFrame = []
+let lastClicked
+
+class Card {
+  constructor({id, name, img, type, breed, description, age, inoculations, diseases, parasites}) {
+    this.id = id
+    this.name = name
+    this.img = img
+  }
+
+  generateCard () {
+    let template = ''
+    let card = document.createElement('div')
+    card.className = 'card'
+    card.setAttribute('data-id', this.id)
+
+    // if (this.img) {
+      template += `<div><img src=${this.img} alt="Look how cute I am"></div>`        
+    // }
+
+    // if (this.name) {
+      template += `<p>${this.name}</p>`
+      template += `<button class="button-secondary">Learn more</button>`
+    // }
+
+    card.innerHTML = template
+
+    return card
+  }
+}
+
+const generateCards = (petsArray) => {
+  const cards = []
+  petsArray.forEach(pet => {
+    let petObject = new Card(pet)
+    cards.push(petObject.generateCard())
+  })
+  return cards
+}
+
+const emptySliderBody = () => {
+  sliderBody.innerHTML = ''
+  return sliderBody
+}
+
+const showCards = (array, action) => {
+  generateCards(array).forEach(card => {
+    (action === 'append') ? sliderBody.append(card) : sliderBody.prepend(card)
+  })
+}
+
+const generateCurrentFrame = () => {
+  // check these breakpoints when changing $laptop-width and $tablet-width settings in base.scss
+    if (window.matchMedia("(max-width: 767px)").matches) {
+    currentFrame = petsArray.slice(0, 1)
+  } else if (window.matchMedia("(max-width: 1064px)").matches) {
+    currentFrame = petsArray.slice(0, 2)
+  } else {
+    currentFrame = [...petsArray.slice(0, 3),...petsArray.slice(0, 3), ...petsArray.slice(0, 3)]
+  }
+  showCards(currentFrame)
+}
+
+const filterAvailablePets = () => {
+  return petsArray.filter(pet => !currentFrame.includes(pet))
+}
+
+const generateNextFrame = (action) => {
+  const nextFrame = filterAvailablePets().slice(0, currentFrame.length)
+  showCards(nextFrame, action) 
+  currentFrame = nextFrame.slice()
+}
+
+emptySliderBody()
+generateCurrentFrame()
+
+
+// --------------------------------------------------------------
+
+const sliderLeftButton = document.querySelector('.slider-nav-left').firstElementChild
+const sliderRightButton = document.querySelector('.slider-nav-right').firstElementChild
+const slider = document.querySelector(".slider-body");
+
+
+
+// const slideLeft = () => {
+//   slider.classList.add("transition-left")
+//   sliderLeftButton.removeEventListener("click", slideLeft)
+//   sliderRightButton.removeEventListener("click", slideRight)
+// }
+
+const slideRight = () => {
+  if (lastClicked !== 'l') {
+  previousFrame = currentFrame.slice()
+  generateNextFrame('prepend')
+  } else {
+  const buffer = previousFrame.slice()
+  previousFrame = currentFrame.slice()
+  currentFrame = buffer.slice()
+  }
+  lastClicked = 'r'
+  slider.classList.add("transition-right")
+  // sliderLeftButton.removeEventListener("click", slideLeft)
+  // sliderRightButton.removeEventListener("click", slideRight)
+}
+
+// sliderLeftButton.addEventListener("click", slideLeft)
+
+sliderRightButton.addEventListener("click", slideRight)
+
+// slider.addEventListener("animationend", (animationEvent) => {
+//   let previousFrame;
+//   if (animationEvent.animationName === "slide-left") {
+//     slider.classList.remove("transition-left");
+//     previousFrame = ITEM_LEFT;
+//     document.querySelector("#item-active").innerHTML = ITEM_LEFT.innerHTML;
+//   } else {
+//     slider.classList.remove("transition-right");
+//     previousFrame = ITEM_RIGHT;
+//     document.querySelector("#item-active").innerHTML = ITEM_RIGHT.innerHTML;
+//   }
+  
+//   previousFrame.innerHTML = "";
+//   for (let i = 0; i < 3; i++) {
+//     const card = createCardTemplate();
+//     card.innerText = Math.floor(Math.random() * 8);
+//     previousFrame.appendChild(card);
+//   }
+  
+//   BTN_LEFT.addEventListener("click", moveLeft);
+//   BTN_RIGHT.addEventListener("click", moveRight);
+// })
