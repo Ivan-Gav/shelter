@@ -131,17 +131,19 @@ const filterArray = (array) => {
     return result.filter(pet => !array.includes(pet))
 }
 
+const rotateArray = (array, steps = 1) => {
+    let result = array.slice( - steps)
+    return result.concat(array.slice(0, (array.length - steps)))
+}
+
 const createPetsArray = (array) => {
-    let result = []
-    for (let i = 0; i < 2; i++) {
-        let petsArray = randomizeArray(array)
-        petsArray = petsArray.concat(filterArray(petsArray.slice(-2)).slice(0, 4))
-            .concat(filterArray(petsArray.slice(-4)))
-            .concat(filterArray(petsArray.slice(-4)).slice(0, 2))
-            .concat(filterArray(petsArray.slice(-2)))
-        result.push(...petsArray)
-    }
-    return result
+    let petsArray = randomizeArray(array)
+    return petsArray.slice()
+                    .concat(rotateArray(petsArray,7))
+                    .concat(rotateArray(petsArray,6))
+                    .concat(rotateArray(petsArray,5))
+                    .concat(rotateArray(petsArray,3))
+                    .concat(rotateArray(petsArray,2)) 
 }
 
 const emptyGallery = () => {
@@ -333,5 +335,4 @@ const petJsonArray = createPetsArray(petJsonInitialArray)
 const cardsArray = generateCards(petJsonArray)
 mediaQuery()
 renderPages(cardsArray)
-
 paginationConrols()
