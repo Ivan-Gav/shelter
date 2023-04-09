@@ -264,11 +264,18 @@ const paginationConrols = () => {
 // ----------------------------------------------------------------------------------------------------
 
 class Card {
-    constructor({ id, name, img, type, breed, description, age, inoculations, diseases, parasites }) {
-        this.id = id
-        this.name = name
-        this.img = img
-    }
+  constructor({ id, name, img, type, breed, description, age, inoculations, diseases, parasites }) {
+    this.id = id
+    this.name = name
+    this.img = img
+    this.type = type
+    this.breed = breed
+    this.description = description
+    this.age = age
+    this.inoculations = inoculations
+    this.diseases = diseases
+    this.parasites = parasites
+  }
 
     generateCard() {
         let template = ''

@@ -151,14 +151,14 @@ button {
     overflow: hidden;
     pointer-events: none;
     // z-index: 98;
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-    background-color: black;
+    background: rgba(0, 0, 0, 0.0);
+    @include transition(background-color);
+    @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
 
     &.active {
         pointer-events: auto;
-        opacity: 0.6;
-        @include transition(opacity);
+        background: rgba(0, 0, 0, 0.6);
+        @include transition(background-color);
     }
 }
 
@@ -167,4 +167,155 @@ button {
     left: 0;
     top: 0;
     width: 100%;
+}
+
+// Modal
+
+.modal-container {
+    // z-index: 70;
+    width: 952px;
+    height: 552px;
+    margin: auto;
+    @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
+
+    @include media-tablet {
+        width: 682px;
+        height: 402px;
+    }
+
+    @include media-mobile {
+        width: 270px;
+        height: 393px;
+    }
+}
+
+.modal-window {
+    width: 900px;
+    height: 500px;
+    background-color: $light-s;
+    border-radius: 9px;
+    @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: flex-start);
+
+    @include media-tablet {
+        width: 630px;
+        height: 350px;
+    }
+
+    @include media-mobile {
+        width: 240px;
+        height: 341px;
+    }
+}
+
+.modal-image {
+    height: 100%;
+    min-width: 500px;
+    width: 500px;
+
+    @include media-tablet {
+        height: 100%;
+        min-width: 350px;
+        width: 350px;
+    }
+
+    @include media-mobile {
+        display: none;
+    }
+
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 9px;
+    }
+}
+
+.modal-description {
+    height: 100%;
+    width: 400px;
+    padding: 50px 20px 10px 29px;
+    @include flex ($flexdir: column, $justifycont: flex-start, $alignitems: flex-start);
+
+    @include media-tablet {
+        padding: 10px;
+    }
+
+
+    h3 {
+        @include font ($size: 3.5rem, $weight: 400, $style: normal, $lineheight: 130%, $spacing: 0.06em);
+        color: black;
+        
+        @include media-mobile {
+            align-self: center;
+        }
+    }
+
+    p {
+        color: black;
+
+        @include media-tablet {
+            @include font ($size: 1.3rem, $weight: 400, $style: normal, $lineheight: 110%, $spacing: 0.06em);
+        }
+    }
+
+    ul {
+        list-style-position: inside;
+    }
+
+    li {
+        @include font ($size: 1.5rem, $weight: 400, $style: normal, $lineheight: 120%, $spacing: 0.06em);
+        margin-bottom: 10px;
+        
+        @include media-tablet {
+            margin-bottom: 6px;
+        }
+
+        @include media-mobile {
+            margin-bottom: 5px;
+        }
+
+        &::marker {
+            color: $primary;
+        }
+    }
+
+    .modal-subheader {
+        font-family: $georgia;
+        @include font ($size: 2rem, $weight: 400, $style: normal, $lineheight: 115%, $spacing: 0.06em);
+        color: black;
+        margin-top: 8px;
+
+        @include media-mobile {
+            align-self: center;
+        }
+    }
+}
+
+.modal-features {
+    @include font ($size: 1.5rem, $weight: 700, $style: normal, $lineheight: 110%, $spacing: 0.06em);
+}
+
+
+.modal-text {
+    font-family: $georgia;
+    @include font ($size: 1.5rem, $weight: 400, $style: normal, $lineheight: 115%, $spacing: 0.06em);
+    padding: 40px 0;
+    @include media-tablet {
+        padding: 20px 0;
+    }
+    @include media-mobile {
+        text-align: justify;
+    }
+}
+
+.modal-close {
+    align-self: flex-end;
+    padding: 0 10px;
+    @include media-mobile {
+        padding: 0;
+    }
+
+    button {
+        font-size: 2.5rem;
+    }
 }

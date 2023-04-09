@@ -132,6 +132,13 @@ class Card {
     this.id = id
     this.name = name
     this.img = img
+    this.type = type
+    this.breed = breed
+    this.description = description
+    this.age = age
+    this.inoculations = inoculations
+    this.diseases = diseases
+    this.parasites = parasites
   }
 
   generateCard() {
