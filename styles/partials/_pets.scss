@@ -117,8 +117,6 @@ header {
 
 .gallery-body {
     @include flex ($flexdir: row, $justifycont: center, $alignitems: flex-start);
-    flex-wrap: wrap;
-    gap: 30px 40px;
     width: 100%;
     max-height: 930px;
     overflow: hidden;
@@ -126,6 +124,40 @@ header {
     @include media-tablet {
         max-height: 1365px;
         padding: 0;
+    }
+    @include media-mobile {
+        @include flex ($flexdir: row, $justifycont: center, $alignitems: flex-start);
+    }
+}
+
+.gallery-page {
+    @include flex ($flexdir: row, $justifycont: center, $alignitems: flex-start);
+    flex-wrap: wrap;
+    gap: 30px 40px;
+    min-width: 1200px;
+    max-height: 930px;
+    overflow: hidden;
+    padding: 15px 0;
+    @include media-laptop {
+        min-width: 0;
+        max-width: 890px;
+    }
+    @include media-tablet {
+        @include flex ($flexdir: row, $justifycont: center, $alignitems: flex-start);
+        min-width: 580px;
+        max-height: 1365px;
+        padding: 0;
+    }
+    @include media-mobile {
+        @include flex ($flexdir: column, $justifycont: flex-start, $alignitems: center);
+        min-width: 270px;
+        max-width: 270px;
+        max-height: 1365px;
+        padding: 0;
+    }
+
+    &.hidden {
+        display: none;
     }
 }
 
