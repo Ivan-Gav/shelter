@@ -287,22 +287,24 @@ button.round-button.active {
 
 .modal-container {
   z-index: -10;
-  width: 952px;
+  width: 1004px;
   height: 552px;
   margin: auto;
   opacity: 0;
+  padding-left: 52px;
   transition: opacity 0.5s ease-in;
 }
 @media screen and (max-width: 1064px) {
   .modal-container {
-    width: 682px;
+    width: 734px;
     height: 402px;
   }
 }
 @media screen and (max-width: 767px) {
   .modal-container {
-    width: 270px;
+    width: 301px;
     height: 393px;
+    padding-left: 31px;
   }
 }
 .modal-container.active {

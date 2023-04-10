@@ -299,6 +299,8 @@ const showPopUp = (pet) => {
 
   document.addEventListener('click', (event) => {
     if (((event.target.parentElement.className === 'modal-close')
+      || (event.target.className === 'modal-close')
+      || (event.target.className === 'modal-container active')
       || (event.target.className === 'overlay active'))) {
       body.classList.remove('disable-scroll')
       popUp.classList.remove('active')
