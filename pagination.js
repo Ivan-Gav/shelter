@@ -166,6 +166,7 @@ const renderPages = (cardsArray) => {
     numberOfPages = arrOfChunks.length
     pages.forEach(page => gallery.append(page))
     showFirstPage()
+    addCardListeners()
 }
 
 const generateCards = (petJsonArray) => {
@@ -323,7 +324,57 @@ const mediaQuery = () => {
     }
 }
 
-//------------------------------------------------------------------------------------------------
+// Popups--------------------------------------------------------------------------
+
+const showPopUp = (pet) => {
+    let popUp = document.querySelector('.modal-container')
+    let overlay = document.querySelector('.overlay')
+  
+    popUp.querySelector('.modal-image').firstElementChild.src = pet.img
+    popUp.querySelector('.modal-header').innerText = pet.name
+    popUp.querySelector('.modal-subheader').firstElementChild.innerText = pet.type
+    popUp.querySelector('.modal-subheader').lastElementChild.innerText = pet.breed
+    popUp.querySelector('.modal-text').innerText = pet.description
+    popUp.querySelectorAll('.modal-features')[0].nextElementSibling.innerText = `  ${pet.age}`
+    popUp.querySelectorAll('.modal-features')[1].nextElementSibling.innerText = `  ${pet.inoculations}`
+    popUp.querySelectorAll('.modal-features')[2].nextElementSibling.innerText = `  ${pet.diseases}`
+    popUp.querySelectorAll('.modal-features')[3].nextElementSibling.innerText = `  ${pet.parasites}`
+    
+    body.classList.add('disable-scroll')
+    overlay.classList.add('active')
+    popUp.classList.add('active')
+  
+    document.addEventListener('click', (event) => {
+      if (((event.target.parentElement.className === 'modal-close')
+        || (event.target.className === 'overlay active'))) {
+        body.classList.remove('disable-scroll')
+        popUp.classList.remove('active')
+        overlay.classList.remove('active')
+      }
+    })
+  
+  }
+  
+  const getPetData = (id) => {
+    return petJsonInitialArray.find(pet => pet.id == id)
+  }
+  
+  const addCardListeners = () => {
+    const cards = document.querySelectorAll('.card')
+    cards.forEach((card) => {
+      card.addEventListener("click", event => {
+        const clickedId = event.currentTarget.dataset.id
+        const thePet = getPetData(clickedId)
+        showPopUp(thePet)
+      })
+    })
+  }
+  
+  
+  //------------------------------------------------------------------
+
+
+
 
 const gallery = document.querySelector('.gallery-body')
 const page = document.querySelector('.gallery-page')

@@ -150,34 +150,33 @@ button {
     left: 0;
     overflow: hidden;
     pointer-events: none;
-    // z-index: 98;
-    background: rgba(0, 0, 0, 0.0);
+    z-index: 60;
+    background: rgba(41, 41, 41, 0.0);
     @include transition(background-color);
     @include flex ($flexdir: row, $justifycont: center, $alignitems: center);
 
     &.active {
         pointer-events: auto;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(41, 41, 41, 0.6);
         @include transition(background-color);
     }
 }
 
 .disable-scroll {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
+    overflow: hidden;
 }
 
 // Modal
 
 .modal-container {
-    // z-index: 70;
+
+    z-index: - 10;
     width: 952px;
     height: 552px;
     margin: auto;
-    @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
-
+    opacity: 0;
+    @include transition(opacity);
+    
     @include media-tablet {
         width: 682px;
         height: 402px;
@@ -187,6 +186,13 @@ button {
         width: 270px;
         height: 393px;
     }
+
+    &.active {
+        @include flex ($flexdir: column, $justifycont: space-between, $alignitems: flex-start);
+        z-index: 70;
+        opacity: 1;
+        @include transition(opacity);
+    }
 }
 
 .modal-window {
@@ -194,6 +200,8 @@ button {
     height: 500px;
     background-color: $light-s;
     border-radius: 9px;
+    overflow: hidden;
+
     @include flex ($flexdir: row, $justifycont: flex-start, $alignitems: flex-start);
 
     @include media-tablet {
@@ -205,6 +213,7 @@ button {
         width: 240px;
         height: 341px;
     }
+    
 }
 
 .modal-image {
@@ -226,13 +235,16 @@ button {
     img {
         width: 100%;
         height: auto;
-        border-radius: 9px;
     }
 }
 
 .modal-description {
     height: 100%;
     width: 400px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
     padding: 50px 20px 10px 29px;
     @include flex ($flexdir: column, $justifycont: flex-start, $alignitems: flex-start);
 
@@ -240,13 +252,13 @@ button {
         padding: 10px;
     }
 
-
     h3 {
         @include font ($size: 3.5rem, $weight: 400, $style: normal, $lineheight: 130%, $spacing: 0.06em);
         color: black;
         
         @include media-mobile {
             align-self: center;
+            text-align: center;
         }
     }
 
@@ -259,7 +271,8 @@ button {
     }
 
     ul {
-        list-style-position: inside;
+        // list-style-position: inside;
+        padding-left: 15px;
     }
 
     li {
@@ -287,6 +300,7 @@ button {
 
         @include media-mobile {
             align-self: center;
+            text-align: center;
         }
     }
 }
@@ -309,6 +323,8 @@ button {
 }
 
 .modal-close {
+    width: 100%;
+    @include flex ($flexdir: row, $justifycont: flex-end);
     align-self: flex-end;
     padding: 0 10px;
     @include media-mobile {

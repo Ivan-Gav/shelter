@@ -267,7 +267,8 @@ button.round-button.active {
   left: 0;
   overflow: hidden;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0);
+  z-index: 60;
+  background: rgba(41, 41, 41, 0);
   transition: background-color 0.5s ease-in;
   display: flex;
   flex-direction: row;
@@ -276,25 +277,21 @@ button.round-button.active {
 }
 .overlay.active {
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(41, 41, 41, 0.6);
   transition: background-color 0.5s ease-in;
 }
 
 .disable-scroll {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
+  overflow: hidden;
 }
 
 .modal-container {
+  z-index: -10;
   width: 952px;
   height: 552px;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
 }
 @media screen and (max-width: 1064px) {
   .modal-container {
@@ -308,12 +305,22 @@ button.round-button.active {
     height: 393px;
   }
 }
+.modal-container.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 70;
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
 
 .modal-window {
   width: 900px;
   height: 500px;
   background-color: #FAFAFA;
   border-radius: 9px;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -352,17 +359,20 @@ button.round-button.active {
 .modal-image img {
   width: 100%;
   height: auto;
-  border-radius: 9px;
 }
 
 .modal-description {
   height: 100%;
   width: 400px;
+  overflow: auto;
   padding: 50px 20px 10px 29px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.modal-description::-webkit-scrollbar {
+  width: 8px;
 }
 @media screen and (max-width: 1064px) {
   .modal-description {
@@ -380,6 +390,7 @@ button.round-button.active {
 @media screen and (max-width: 767px) {
   .modal-description h3 {
     align-self: center;
+    text-align: center;
   }
 }
 .modal-description p {
@@ -395,7 +406,7 @@ button.round-button.active {
   }
 }
 .modal-description ul {
-  list-style-position: inside;
+  padding-left: 15px;
 }
 .modal-description li {
   font-size: 1.5rem;
@@ -431,6 +442,7 @@ button.round-button.active {
 @media screen and (max-width: 767px) {
   .modal-description .modal-subheader {
     align-self: center;
+    text-align: center;
   }
 }
 
@@ -463,6 +475,11 @@ button.round-button.active {
 }
 
 .modal-close {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: normal;
   align-self: flex-end;
   padding: 0 10px;
 }

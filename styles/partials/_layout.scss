@@ -77,7 +77,6 @@
         }
 
         @include media-mobile {
-            // display: none;
             position: fixed;
             z-index: 70;
             width: 320px;

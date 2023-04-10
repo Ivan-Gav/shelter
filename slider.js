@@ -193,6 +193,7 @@ const start = () => {
   showCards(petsOnScreenJson, frameCenter)
   nextPetsOnScreenJson = generateNextPetsJsonArray(petsOnScreenJson)
   generateNextFrame(nextPetsOnScreenJson)
+  addCardListeners()
 }
 
 // Media queries --------------------------------------------------------------------------------
@@ -279,52 +280,33 @@ const slideRight = () => {
 // Popups--------------------------------------------------------------------------
 
 const showPopUp = (pet) => {
-  let template = ''
-  let popUp = document.createElement('div')
-  popUp.className = 'overlay'
-  popUp.classList.add('active')
-  template += `<div class="modal-container">`
-  template += `<div class="modal-close">
-                <button class="round-button">&times;</button>
-              </div>`
-  template += `<div class="modal-window">`
-  template += `<div class="modal-image">`
-  template += `<img src=${pet.img} alt="portrait">`
-  template += `</div>`
-  template += `<div class="modal-description">`
-  template += `<h3 class="modal-header">${pet.name}</h3>`
-  template += `<p class="modal-subheader"><span>${pet.type}</span> - <span>${pet.breed}</span></p>`
-  template += `<p class="modal-text">${pet.description}</p>`
-  template += `<ul>`
-  template += `<li><span class="modal-features">Age:</span><span>  ${pet.age}</span></li>`
-  template += `<li><span class="modal-features">Inoculations:</span><span> ${pet.inoculations}</span></li>`
-  template += `<li><span class="modal-features">Diseases:</span><span>  ${pet.diseases}</span></li>`
-  template += `<li><span class="modal-features">Parasites:</span><span>  ${pet.parasites}</span></li>`
-  template += `</ul>`
-  template += `</div></div></div>`
-  popUp.innerHTML = template
-  body.append(popUp)
+  let popUp = document.querySelector('.modal-container')
+  let overlay = document.querySelector('.overlay')
+
+  popUp.querySelector('.modal-image').firstElementChild.src = pet.img
+  popUp.querySelector('.modal-header').innerText = pet.name
+  popUp.querySelector('.modal-subheader').firstElementChild.innerText = pet.type
+  popUp.querySelector('.modal-subheader').lastElementChild.innerText = pet.breed
+  popUp.querySelector('.modal-text').innerText = pet.description
+  popUp.querySelectorAll('.modal-features')[0].nextElementSibling.innerText = `  ${pet.age}`
+  popUp.querySelectorAll('.modal-features')[1].nextElementSibling.innerText = `  ${pet.inoculations}`
+  popUp.querySelectorAll('.modal-features')[2].nextElementSibling.innerText = `  ${pet.diseases}`
+  popUp.querySelectorAll('.modal-features')[3].nextElementSibling.innerText = `  ${pet.parasites}`
+  
   body.classList.add('disable-scroll')
+  overlay.classList.add('active')
+  popUp.classList.add('active')
 
   document.addEventListener('click', (event) => {
     if (((event.target.parentElement.className === 'modal-close')
       || (event.target.className === 'overlay active'))) {
       body.classList.remove('disable-scroll')
-      popUp.remove()
+      popUp.classList.remove('active')
+      overlay.classList.remove('active')
     }
   })
 
 }
-
-// const hidePopUp = () => {
-//   document.querySelector('.overlay').classList.remove('active')
-//   burger.classList.remove('active')
-//   menu.classList.remove('active')
-  
-// }
-
-
-
 
 const getPetData = (id) => {
   return petsJsonArray.find(pet => pet.id == id)
@@ -369,13 +351,3 @@ slider.addEventListener("animationend", (animationEvent) => {
   sliderRightButton.addEventListener("click", slideRight)
   addCardListeners()
 })
-
-
-
-
-
-
-
-
-addCardListeners()
-
