@@ -172,21 +172,21 @@ button {
 
     z-index: - 10;
     width: 1004px;
-    height: 552px;
+    height: 604px;
     margin: auto;
     opacity: 0;
-    padding-left: 52px;
+    padding: 0 0 52px 52px;
     @include transition(opacity);
     
     @include media-tablet {
         width: 734px;
-        height: 402px;
+        height: 454px;
     }
 
     @include media-mobile {
         width: 301px;
-        height: 393px;
-        padding-left: 31px;
+        height: 445px;
+        padding: 0 0 52px 31px;
     }
 
     &.active {
