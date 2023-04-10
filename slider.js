@@ -113,6 +113,7 @@ const randomizeArray = (array) => {
 
 const petsJsonArray = randomizeArray(petJsonInitialArray)
 
+
 const sliderBody = document.querySelector('.slider-body')
 const frameLeft = document.querySelector('.frame-left')
 const frameRight = document.querySelector('.frame-right')
@@ -201,14 +202,12 @@ window.matchMedia('(max-width: 1064px)').addEventListener('change', () => {
   emptyFrame(frameLeft)
   emptyFrame(frameRight)
   start()
-  console.log('change 1064px')
 })
 
 window.matchMedia('(max-width: 767px)').addEventListener('change', () => {
   emptyFrame(frameLeft)
   emptyFrame(frameRight)
   start()
-  console.log('change 768px')
 })
 
 const mediaQuery = () => {
@@ -234,9 +233,6 @@ const generateNextFrame = (arrayJson) => {
   showCards(arrayJson, frameRight)
 }
 
-start()
-
-
 // ----------------------------------------------------------------------------------------------------
 
 const sliderLeftButton = document.querySelector('.slider-nav-left').firstElementChild
@@ -246,8 +242,6 @@ const slider = document.querySelector('.slider-frames');
 
 
 const slideLeft = () => {
-  console.log('petsBuffer when clicked')
-  console.log(petsBuffer)
   emptyFrame(frameLeft)
   emptyFrame(frameRight)
   if (lastClicked === 'r') {
@@ -266,8 +260,6 @@ const slideLeft = () => {
 }
 
 const slideRight = () => {
-  console.log('petsBuffer when clicked')
-  console.log(petsBuffer)
   emptyFrame(frameLeft)
   emptyFrame(frameRight)
   if (lastClicked === 'l') {
@@ -283,6 +275,80 @@ const slideRight = () => {
   sliderLeftButton.removeEventListener("click", slideLeft)
   sliderRightButton.removeEventListener("click", slideRight)
 }
+
+// Popups--------------------------------------------------------------------------
+
+const showPopUp = (pet) => {
+  let template = ''
+  let popUp = document.createElement('div')
+  popUp.className = 'overlay'
+  popUp.classList.add('active')
+  template += `<div class="modal-container">`
+  template += `<div class="modal-close">
+                <button class="round-button">&times;</button>
+              </div>`
+  template += `<div class="modal-window">`
+  template += `<div class="modal-image">`
+  template += `<img src=${pet.img} alt="portrait">`
+  template += `</div>`
+  template += `<div class="modal-description">`
+  template += `<h3 class="modal-header">${pet.name}</h3>`
+  template += `<p class="modal-subheader"><span>${pet.type}</span> - <span>${pet.breed}</span></p>`
+  template += `<p class="modal-text">${pet.description}</p>`
+  template += `<ul>`
+  template += `<li><span class="modal-features">Age:</span><span>  ${pet.age}</span></li>`
+  template += `<li><span class="modal-features">Inoculations:</span><span> ${pet.inoculations}</span></li>`
+  template += `<li><span class="modal-features">Diseases:</span><span>  ${pet.diseases}</span></li>`
+  template += `<li><span class="modal-features">Parasites:</span><span>  ${pet.parasites}</span></li>`
+  template += `</ul>`
+  template += `</div></div></div>`
+  popUp.innerHTML = template
+  body.append(popUp)
+  body.classList.add('disable-scroll')
+
+  document.addEventListener('click', (event) => {
+    if (((event.target.parentElement.className === 'modal-close')
+      || (event.target.className === 'overlay active'))) {
+      body.classList.remove('disable-scroll')
+      popUp.remove()
+    }
+  })
+
+}
+
+// const hidePopUp = () => {
+//   document.querySelector('.overlay').classList.remove('active')
+//   burger.classList.remove('active')
+//   menu.classList.remove('active')
+  
+// }
+
+
+
+
+const getPetData = (id) => {
+  return petsJsonArray.find(pet => pet.id == id)
+}
+
+const addCardListeners = () => {
+  const sliderFrame = document.querySelector('.frame-center')
+  const cards = sliderFrame.querySelectorAll('.card')
+  cards.forEach((card) => {
+    card.addEventListener("click", event => {
+      const clickedId = event.currentTarget.dataset.id
+      const thePet = getPetData(clickedId)
+      showPopUp(thePet)
+    })
+  })
+}
+
+
+//------------------------------------------------------------------
+
+start()
+
+
+// Event listeners for slider
 
 sliderLeftButton.addEventListener("click", slideLeft)
 sliderRightButton.addEventListener("click", slideRight)
@@ -301,4 +367,15 @@ slider.addEventListener("animationend", (animationEvent) => {
 
   sliderLeftButton.addEventListener("click", slideLeft)
   sliderRightButton.addEventListener("click", slideRight)
+  addCardListeners()
 })
+
+
+
+
+
+
+
+
+addCardListeners()
+
